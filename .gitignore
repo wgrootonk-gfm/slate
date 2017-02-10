@@ -16,6 +16,8 @@ build/
 .cache
 .vagrant
 .sass-cache
+*.sublime-project
+*.sublime-workspace
 
 # YARD artifacts
 .yardoc
