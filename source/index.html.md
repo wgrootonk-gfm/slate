@@ -1,189 +1,852 @@
 ---
-title: API Reference
-
+title: GFM Partner API v0.5.0
 language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
-
+  - shell: Shell
+  - http: HTTP
+  - html: JavaScript
+  - javascript: Node.JS
+  - python: Python
+  - ruby: Ruby
+  - java: Java
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
-
-includes:
-  - errors
-
+  - '<a href="https://www.gofundme.com">Website</a>'
+includes: []
 search: true
+highlight_theme: darkula
 ---
 
-# Introduction
+# GFM Partner API v0.5.0
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Partner API integration for GoFundMe services
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+Base URL = http://api.gofundme.com/partner/v1
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
 
-# Authentication
 
-> To authorize, use this code:
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+# Fund
 
-```python
-import kittn
+Fund specific operations
 
-api = kittn.authorize('meowmeowmeow')
-```
+## fund.create
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+> Code samples
 
-```javascript
-const kittn = require('kittn');
+````shell
+# You can also use wget
+curl -X post http://api.gofundme.com/partner/v1/funds
+````
 
-let api = kittn.authorize('meowmeowmeow');
-```
+````http
+POST http://api.gofundme.com/partner/v1/funds HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
+````
 
-> Make sure to replace `meowmeowmeow` with your API key.
+````html
+<script>
+  $.ajax({
+    url: 'http://api.gofundme.com/partner/v1/funds',
+    method: 'post',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  })
+</script>
+````
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+````javascript
+const request = require('node-fetch');
+fetch('http://api.gofundme.com/partner/v1/funds', { method: 'POST'})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+````
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+````ruby
+require 'rest-client'
+require 'json'
 
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
+result = RestClient.post 'http://api.gofundme.com/partner/v1/funds', params:
   {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+    # TODO
   }
-]
-```
 
-This endpoint retrieves all kittens.
+p JSON.parse(result)
+````
 
-### HTTP Request
+````python
+import requests
 
-`GET http://example.com/api/kittens`
+r = requests.post('http://api.gofundme.com/partner/v1/funds', params={
+  # TODO
+})
 
-### Query Parameters
+print r.json()
+````
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+````java
+URL obj = new URL("http://api.gofundme.com/partner/v1/funds");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+````
 
+`POST /funds`
+
+*Create Fund*
+
+Creates a new GoFundMe fund
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+CreateFundBody|body|CreateFundBody|true| JSON request body for fund creation
+
+
+
+> Body parameter
+
+````json
+{
+  "user_id": "string",
+  "name": "string",
+  "description": "string",
+  "goal": "string"
+}
+````
+### Responses
+
+Status|Meaning|Description
+---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|JSON response body for fund creation
+401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
+500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+
+> Example responses
+
+````json
+{
+  "id": "string"
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+This operation does not require authentication
 </aside>
 
-## Get a Specific Kitten
+## fund.get
 
-```ruby
-require 'kittn'
+> Code samples
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+````shell
+# You can also use wget
+curl -X get http://api.gofundme.com/partner/v1/funds/{fund_id}
+````
 
-```python
-import kittn
+````http
+GET http://api.gofundme.com/partner/v1/funds/{fund_id} HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
+````
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+````html
+<script>
+  $.ajax({
+    url: 'http://api.gofundme.com/partner/v1/funds/{fund_id}',
+    method: 'get',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  })
+</script>
+````
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+````javascript
+const request = require('node-fetch');
+fetch('http://api.gofundme.com/partner/v1/funds/{fund_id}', { method: 'GET'})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+````
 
-```javascript
-const kittn = require('kittn');
+````ruby
+require 'rest-client'
+require 'json'
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
+result = RestClient.get 'http://api.gofundme.com/partner/v1/funds/{fund_id}', params:
+  {
+    # TODO
+  }
 
-> The above command returns JSON structured like this:
+p JSON.parse(result)
+````
 
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+````python
+import requests
+
+r = requests.get('http://api.gofundme.com/partner/v1/funds/{fund_id}', params={
+  # TODO
+})
+
+print r.json()
+````
+
+````java
+URL obj = new URL("http://api.gofundme.com/partner/v1/funds/{fund_id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
 }
-```
+in.close();
+System.out.println(response.toString());
+````
 
-This endpoint retrieves a specific kitten.
+`GET /funds/{fund_id}`
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+*Get Fund*
 
-### HTTP Request
+Get a single GoFundMe fund
 
-`GET http://example.com/kittens/<ID>`
+### Parameters
 
-### URL Parameters
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+fund_id|path|string|true|Fund Id
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+
+
+### Responses
+
+Status|Meaning|Description
+---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
+401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
+500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+
+> Example responses
+
+````json
+{
+  "id": "string"
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## fund.get.comments
+
+> Code samples
+
+````shell
+# You can also use wget
+curl -X get http://api.gofundme.com/partner/v1/funds/{fund_id}/comments
+````
+
+````http
+GET http://api.gofundme.com/partner/v1/funds/{fund_id}/comments HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
+````
+
+````html
+<script>
+  $.ajax({
+    url: 'http://api.gofundme.com/partner/v1/funds/{fund_id}/comments',
+    method: 'get',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  })
+</script>
+````
+
+````javascript
+const request = require('node-fetch');
+fetch('http://api.gofundme.com/partner/v1/funds/{fund_id}/comments', { method: 'GET'})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+````
+
+````ruby
+require 'rest-client'
+require 'json'
+
+result = RestClient.get 'http://api.gofundme.com/partner/v1/funds/{fund_id}/comments', params:
+  {
+    # TODO
+  }
+
+p JSON.parse(result)
+````
+
+````python
+import requests
+
+r = requests.get('http://api.gofundme.com/partner/v1/funds/{fund_id}/comments', params={
+  # TODO
+})
+
+print r.json()
+````
+
+````java
+URL obj = new URL("http://api.gofundme.com/partner/v1/funds/{fund_id}/comments");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+````
+
+`GET /funds/{fund_id}/comments`
+
+*Get Fund Comments*
+
+Get a comments for a given fund
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+fund_id|path|string|true|Fund Id
+date|query|string|false|String representation of date with YYYY-MM-DD format
+size|query|string|false|Max number of results expected from request
+
+
+
+### Responses
+
+Status|Meaning|Description
+---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
+401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
+500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+
+> Example responses
+
+````json
+{
+  "scores": [
+    {
+      "id": "string"
+    }
+  ]
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## fund.get.donations
+
+> Code samples
+
+````shell
+# You can also use wget
+curl -X get http://api.gofundme.com/partner/v1/funds/{fund_id}/donations
+````
+
+````http
+GET http://api.gofundme.com/partner/v1/funds/{fund_id}/donations HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
+````
+
+````html
+<script>
+  $.ajax({
+    url: 'http://api.gofundme.com/partner/v1/funds/{fund_id}/donations',
+    method: 'get',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  })
+</script>
+````
+
+````javascript
+const request = require('node-fetch');
+fetch('http://api.gofundme.com/partner/v1/funds/{fund_id}/donations', { method: 'GET'})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+````
+
+````ruby
+require 'rest-client'
+require 'json'
+
+result = RestClient.get 'http://api.gofundme.com/partner/v1/funds/{fund_id}/donations', params:
+  {
+    # TODO
+  }
+
+p JSON.parse(result)
+````
+
+````python
+import requests
+
+r = requests.get('http://api.gofundme.com/partner/v1/funds/{fund_id}/donations', params={
+  # TODO
+})
+
+print r.json()
+````
+
+````java
+URL obj = new URL("http://api.gofundme.com/partner/v1/funds/{fund_id}/donations");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+````
+
+`GET /funds/{fund_id}/donations`
+
+*Get Fund Donations*
+
+Get a donations for a given fund
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+fund_id|path|string|true|Fund Id
+date|query|string|false|String representation of date with YYYY-MM-DD format
+size|query|string|false|Max number of results expected from request
+
+
+
+### Responses
+
+Status|Meaning|Description
+---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
+401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
+500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+
+> Example responses
+
+````json
+{
+  "scores": [
+    {
+      "id": "string"
+    }
+  ]
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+# User
+
+User specific operations
+
+## user.create
+
+> Code samples
+
+````shell
+# You can also use wget
+curl -X post http://api.gofundme.com/partner/v1/users
+````
+
+````http
+POST http://api.gofundme.com/partner/v1/users HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
+````
+
+````html
+<script>
+  $.ajax({
+    url: 'http://api.gofundme.com/partner/v1/users',
+    method: 'post',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  })
+</script>
+````
+
+````javascript
+const request = require('node-fetch');
+fetch('http://api.gofundme.com/partner/v1/users', { method: 'POST'})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+````
+
+````ruby
+require 'rest-client'
+require 'json'
+
+result = RestClient.post 'http://api.gofundme.com/partner/v1/users', params:
+  {
+    # TODO
+  }
+
+p JSON.parse(result)
+````
+
+````python
+import requests
+
+r = requests.post('http://api.gofundme.com/partner/v1/users', params={
+  # TODO
+})
+
+print r.json()
+````
+
+````java
+URL obj = new URL("http://api.gofundme.com/partner/v1/users");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+````
+
+`POST /users`
+
+*Create User*
+
+Creates a new GoFundMe user account
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+CreateUserBody|body|CreateUserBody|true| JSON request body for user creation
+
+
+
+> Body parameter
+
+````json
+{
+  "email": "string",
+  "name": "string",
+  "password": "string"
+}
+````
+### Responses
+
+Status|Meaning|Description
+---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|JSON response body for user creation
+401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
+500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+
+> Example responses
+
+````json
+{
+  "id": "string"
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## user.get
+
+> Code samples
+
+````shell
+# You can also use wget
+curl -X get http://api.gofundme.com/partner/v1/users/{user_id}
+````
+
+````http
+GET http://api.gofundme.com/partner/v1/users/{user_id} HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
+````
+
+````html
+<script>
+  $.ajax({
+    url: 'http://api.gofundme.com/partner/v1/users/{user_id}',
+    method: 'get',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  })
+</script>
+````
+
+````javascript
+const request = require('node-fetch');
+fetch('http://api.gofundme.com/partner/v1/users/{user_id}', { method: 'GET'})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+````
+
+````ruby
+require 'rest-client'
+require 'json'
+
+result = RestClient.get 'http://api.gofundme.com/partner/v1/users/{user_id}', params:
+  {
+    # TODO
+  }
+
+p JSON.parse(result)
+````
+
+````python
+import requests
+
+r = requests.get('http://api.gofundme.com/partner/v1/users/{user_id}', params={
+  # TODO
+})
+
+print r.json()
+````
+
+````java
+URL obj = new URL("http://api.gofundme.com/partner/v1/users/{user_id}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+````
+
+`GET /users/{user_id}`
+
+*Get User*
+
+Get a single GoFundMe user account
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+user_id|path|string|true|User Id
+
+
+
+### Responses
+
+Status|Meaning|Description
+---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
+401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
+500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+
+> Example responses
+
+````json
+{
+  "id": "string"
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+<aside class="success">
+This operation does not require authentication
+</aside>
 
