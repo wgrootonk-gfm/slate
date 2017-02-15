@@ -1,5 +1,5 @@
 ---
-title: GFM Partner API v0.5.0
+title: GFM Partner API
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -10,14 +10,16 @@ language_tabs:
   - java: Java
 toc_footers:
   - '<a href="https://www.gofundme.com">Website</a>'
-includes: []
+includes: 
+  - auth
+  - errors
 search: true
-highlight_theme: darkula
+
 ---
 
-# GFM Partner API v0.5.0
+# GFM Partner API
 
-Partner API integration for GoFundMe services
+The purpose of the Partner API is to provide a highly integrated set of RESTful APIs that a distinguished third party can use to take specific actions without leaving the comfort of their own platform.
 
 Base URL = http://api.gofundme.com/partner/v1
 
