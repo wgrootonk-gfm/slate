@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>GFM Partner API v0.5.0</title>
+    <title>GFM Partner API</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -255,9 +255,9 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="gfm-partner-api-v0-5-0">GFM Partner API v0.5.0</h1>
+        <h1 id="gfm-partner-api">GFM Partner API</h1>
 
-<p>Partner API integration for GoFundMe services</p>
+<p>The purpose of the Partner API is to provide a highly integrated set of RESTful APIs that a distinguished third party can use to take specific actions without leaving the comfort of their own platform.</p>
 
 <p>Base URL = http://api.gofundme.com/partner/v1</p>
 
@@ -2745,6 +2745,147 @@ curl -X get http://api.gofundme.com/partner/v1/users/<span class="o">{</span>id<
 </span></code></pre>
 <aside class="success">
 This operation does not require authentication
+</aside>
+
+          <h1 id="authentication-with-jwt">Authentication with JWT</h1>
+
+<p>This page contains information on how to authenticate your consumer against the Partner API</p>
+
+<h2 id="overview">Overview</h2>
+
+<p>We utilize JSON Web Tokens (<a href="https://jwt.io/">JWT</a>) to authenticate and verify payloads sent between our partners and our REST API. Every API consumer will have a <strong>Consumer Id</strong> and an associated <strong>API Key</strong>.</p>
+
+<h2 id="authorization-header">Authorization Header</h2>
+
+<p>The partner API will expect the <strong>Authorization</strong> header to be present when accepting JSON web tokens. </p>
+
+<blockquote>
+<p>Auth Header</p>
+</blockquote>
+<pre class="highlight plaintext"><code>Authorization: Bearer &lt;token&gt;
+</code></pre>
+<p>As is standard with JWT our token can be broken into three parts. First we have the <strong>header</strong> which contains the algorithm and token type</p>
+
+<blockquote>
+<p>Header JSON</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"alg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"HS256"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"typ"</span><span class="p">:</span><span class="w"> </span><span class="s2">"JWT"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Second is the request <strong>payload</strong> which contains your <strong>consumer Id</strong> as the <em>sub</em> claim.</p>
+
+<blockquote>
+<p>Payload JSON</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"sub"</span><span class="p">:</span><span class="w"> </span><span class="s2">"y42LW46J9luq3Xq9XMly"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>The final portion of your token will contain the request <strong>signature</strong>.</p>
+
+<blockquote>
+<p>Signature creation</p>
+</blockquote>
+<pre class="highlight plaintext"><code>HMACSHA256(
+  base64UrlEncode(header) + "." +
+  base64UrlEncode(payload),
+  secret
+)
+</code></pre>
+<p>Conceptually our token will contain each of the above parts separated by a period. </p>
+
+<blockquote>
+<p>JWT Structure</p>
+</blockquote>
+<pre class="highlight plaintext"><code>&lt;header&gt;.&lt;payloads&gt;.&lt;signature&gt;
+</code></pre>
+<p>Finally each part in it&rsquo;s true form.</p>
+
+<blockquote>
+<p>JWT Token Example</p>
+</blockquote>
+<pre class="highlight plaintext"><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ5NDJMVzQ2SjlsdXEzWHE5WE1seSJ9.-iIOYeBAaRcnHBayv21eSBqo2ug-W0C0bgrP_6wkl88
+</code></pre>
+          <h1 id="error-handling">Error Handling</h1>
+
+<h2 id="error-responses">Error Responses</h2>
+
+<p>The system will attempt to gracefully catch the details of the error and the context in which they happen so that a predictable informative response can be provided to our API consumers.</p>
+
+<blockquote>
+<p>Error Response Format</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"error"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"domain"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="s2">"int"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_description"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
+
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>So let&rsquo;s break down this response:</p>
+
+<ul>
+<li><strong>domain</strong> is the service in which returned the error. This should always be &ldquo;partner&rdquo;.</li>
+<li><strong>code</strong> is an integer value that references a specific error</li>
+<li><strong>short_description</strong> gives a short informative message </li>
+<li><strong>message</strong> is an optional value that typically provides a human readable string</li>
+<li><strong>data</strong> when applicable the system may attempt to send data around the error typically this can be used to take further action to prevent the error</li>
+</ul>
+
+<blockquote>
+<p>JWT Authentication Failure</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">  
+   </span><span class="nt">"error"</span><span class="p">:{</span><span class="w">  
+      </span><span class="nt">"domain"</span><span class="p">:</span><span class="s2">"partner"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"code"</span><span class="p">:</span><span class="mi">2000</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"short_description"</span><span class="p">:</span><span class="s2">"JWT Authentication failed"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"We were unable to validate the JWT token provided"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
+
+      </span><span class="p">}</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>In the second example we don&rsquo;t provide any data as the error is clearly around a problem with validating the JWT token and therefore has no context beyond just not being able to authenticate.</p>
+
+<h2 id="error-codes">Error Codes</h2>
+
+<p>Our error codes are broken down into groups each of which corresponding to either a specific group of actions or resource.</p>
+
+<h3 id="generic-error-codes"><strong>Generic Error Codes</strong></h3>
+
+<p>Any errors that return with an error code in the <strong>1000&rsquo;s</strong> are generic application level error codes</p>
+
+<ul>
+<li><strong>1000</strong> - Application Fault: Unknown error occurred</li>
+</ul>
+
+<h3 id="authentication-error-codes"><strong>Authentication Error Codes</strong></h3>
+
+<p>Any errors that return with an error code in the <strong>2000&rsquo;s</strong> are typically reserved for authentication or permission errors. </p>
+
+<ul>
+<li><strong>2000</strong> - JWT Authentication Failed: We were unable to validate the Auth token provided</li>
+</ul>
+
+<h3 id="user-resource-error-codes"><strong>User Resource Error Codes</strong></h3>
+
+<p>Any errors that return with an error code in the <strong>3000&rsquo;s</strong> are specific to the User resource</p>
+
+<h3 id="fund-resource-error-codes"><strong>Fund Resource Error Codes</strong></h3>
+
+<p>Any errors that return with an error code in the <strong>3000&rsquo;s</strong> are specific to the Fund resource</p>
+
+<aside class="warning">
+These error codes are subject to change in future versions
 </aside>
 
       </div>
