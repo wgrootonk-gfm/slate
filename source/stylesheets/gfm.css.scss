@@ -24,11 +24,15 @@ a {
     h2 {
         border-top: 1px solid #ccc;
     }
-    table tr:nth-child(odd)>td {
-        background-color: #f9faf5;
+    table tr:nth-child(odd) {
+        &>td {
+            background: none;
+        }
     }
-    table tr:nth-child(even)>td {
-        background-color: #f4f6eb;
+    table tr:nth-child(even) {
+        &>td {
+            background: none;
+        }
     }
 }
 
