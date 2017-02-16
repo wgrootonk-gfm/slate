@@ -1,7 +1,4 @@
 # Authentication with JWT
-This page contains information on how to authenticate your consumer against the Partner API
-
-## Overview
 We utilize JSON Web Tokens ([JWT](https://jwt.io/)) to authenticate and verify payloads sent between our partners and our REST API. Every API consumer will have a **Consumer Id** and an associated **API Key**.
 
 ## Authorization Header
