@@ -1,5 +1,5 @@
 ---
-title: GFM Partner API
+title: GFM Partner API v0.5.0
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -14,12 +14,11 @@ includes:
   - auth
   - errors
 search: true
-
 ---
 
-# GFM Partner API
+# GFM Partner API v0.5.0
 
-The purpose of the Partner API is to provide a highly integrated set of RESTful APIs that a distinguished third party can use to take specific actions without leaving the comfort of their own platform.
+Partner API integration for GoFundMe services
 
 Base URL = http://api.gofundme.com/partner/v1
 
@@ -146,174 +145,12 @@ Status|Meaning|Description
 
 ````json
 {
-  "id": "string"
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## beneficiary.get
-
-> Code samples
-
-````shell
-# You can also use wget
-curl -X get http://api.gofundme.com/partner/v1/beneficiaries/{id}
-````
-
-````http
-GET http://api.gofundme.com/partner/v1/beneficiaries/{id} HTTP/1.1
-Host: api.gofundme.com
-Content-Type: application/json
-Accept: application/json
-````
-
-````html
-<script>
-  $.ajax({
-    url: 'http://api.gofundme.com/partner/v1/beneficiaries/{id}',
-    method: 'get',
-    success: function(data) {
-      console.log(JSON.stringify(data));
-    }
-  })
-</script>
-````
-
-````javascript
-const request = require('node-fetch');
-fetch('http://api.gofundme.com/partner/v1/beneficiaries/{id}', { method: 'GET'})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-````
-
-````ruby
-require 'rest-client'
-require 'json'
-
-result = RestClient.get 'http://api.gofundme.com/partner/v1/beneficiaries/{id}', params:
-  {
-    # TODO
-  }
-
-p JSON.parse(result)
-````
-
-````python
-import requests
-
-r = requests.get('http://api.gofundme.com/partner/v1/beneficiaries/{id}', params={
-  # TODO
-})
-
-print r.json()
-````
-
-````java
-URL obj = new URL("http://api.gofundme.com/partner/v1/beneficiaries/{id}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-````
-
-`GET /beneficiaries/{id}`
-
-*Get Beneficiary*
-
-Get a single GoFundMe beneficiary
-
-### Parameters
-
-Parameter|In|Type|Required|Description
----|---|---|---|---|
-id|path|string|true|Beneficiary Id
-
-
-
-### Responses
-
-Status|Meaning|Description
----|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
-
-> Example responses
-
-````json
-{
-  "id": "string"
+  "id": "string",
+  "email": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "invited_at": 0,
+  "accepted_at": 0
 }
 ````
 ````json
@@ -473,11 +310,22 @@ CreateConsumerBody|body|CreateConsumerBody|true|JSON request body for consumer c
 
 ````json
 {
-  "partner_id": "string",
   "email": "string",
   "name": "string",
+  "description": "string",
+  "url": "string",
   "logo_small": "string",
-  "logo_big": "string"
+  "logo_big": "string",
+  "tax_id": "string",
+  "phone": "string",
+  "address": {
+    "street_line1": "string",
+    "street_line2": "string",
+    "city": "string",
+    "region": "string",
+    "postal_code": "string",
+    "country_code": "string"
+  }
 }
 ````
 ### Responses
@@ -495,7 +343,24 @@ Status|Meaning|Description
 
 ````json
 {
-  "id": "string"
+  "id": "string",
+  "secret": "string",
+  "email": "string",
+  "name": "string",
+  "description": "string",
+  "url": "string",
+  "logo_small": "string",
+  "logo_big": "string",
+  "tax_id": "string",
+  "phone": "string",
+  "address": {
+    "street_line1": "string",
+    "street_line2": "string",
+    "city": "string",
+    "region": "string",
+    "postal_code": "string",
+    "country_code": "string"
+  }
 }
 ````
 ````json
@@ -662,7 +527,23 @@ Status|Meaning|Description
 
 ````json
 {
-  "id": "string"
+  "id": "string",
+  "email": "string",
+  "name": "string",
+  "description": "string",
+  "url": "string",
+  "logo_small": "string",
+  "logo_big": "string",
+  "tax_id": "string",
+  "phone": "string",
+  "address": {
+    "street_line1": "string",
+    "street_line2": "string",
+    "city": "string",
+    "region": "string",
+    "postal_code": "string",
+    "country_code": "string"
+  }
 }
 ````
 ````json
@@ -821,8 +702,20 @@ EditConsumerBody|body|EditConsumerBody|true|JSON request body for consumer editi
 {
   "email": "string",
   "name": "string",
+  "description": "string",
+  "url": "string",
   "logo_small": "string",
-  "logo_big": "string"
+  "logo_big": "string",
+  "tax_id": "string",
+  "phone": "string",
+  "address": {
+    "street_line1": "string",
+    "street_line2": "string",
+    "city": "string",
+    "region": "string",
+    "postal_code": "string",
+    "country_code": "string"
+  }
 }
 ````
 ### Responses
@@ -838,6 +731,369 @@ Status|Meaning|Description
 
 > Example responses
 
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## consumer.reissue
+
+> Code samples
+
+````shell
+# You can also use wget
+curl -X post http://api.gofundme.com/partner/v1/consumers/{id}/reissue
+````
+
+````http
+POST http://api.gofundme.com/partner/v1/consumers/{id}/reissue HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
+````
+
+````html
+<script>
+  $.ajax({
+    url: 'http://api.gofundme.com/partner/v1/consumers/{id}/reissue',
+    method: 'post',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  })
+</script>
+````
+
+````javascript
+const request = require('node-fetch');
+fetch('http://api.gofundme.com/partner/v1/consumers/{id}/reissue', { method: 'POST'})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+````
+
+````ruby
+require 'rest-client'
+require 'json'
+
+result = RestClient.post 'http://api.gofundme.com/partner/v1/consumers/{id}/reissue', params:
+  {
+    # TODO
+  }
+
+p JSON.parse(result)
+````
+
+````python
+import requests
+
+r = requests.post('http://api.gofundme.com/partner/v1/consumers/{id}/reissue', params={
+  # TODO
+})
+
+print r.json()
+````
+
+````java
+URL obj = new URL("http://api.gofundme.com/partner/v1/consumers/{id}/reissue");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+````
+
+`POST /consumers/{id}/reissue`
+
+*Reissue Consumer Secret*
+
+Reissue a GoFundMe consumer secret
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+id|path|string|true|Consumer Id
+
+
+
+### Responses
+
+Status|Meaning|Description
+---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
+400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
+401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
+403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
+429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
+500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+
+> Example responses
+
+````json
+{
+  "id": "string",
+  "secret": "string"
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## consumer.funds
+
+> Code samples
+
+````shell
+# You can also use wget
+curl -X get http://api.gofundme.com/partner/v1/consumers/{id}/funds
+````
+
+````http
+GET http://api.gofundme.com/partner/v1/consumers/{id}/funds HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
+````
+
+````html
+<script>
+  $.ajax({
+    url: 'http://api.gofundme.com/partner/v1/consumers/{id}/funds',
+    method: 'get',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  })
+</script>
+````
+
+````javascript
+const request = require('node-fetch');
+fetch('http://api.gofundme.com/partner/v1/consumers/{id}/funds', { method: 'GET'})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+````
+
+````ruby
+require 'rest-client'
+require 'json'
+
+result = RestClient.get 'http://api.gofundme.com/partner/v1/consumers/{id}/funds', params:
+  {
+    # TODO
+  }
+
+p JSON.parse(result)
+````
+
+````python
+import requests
+
+r = requests.get('http://api.gofundme.com/partner/v1/consumers/{id}/funds', params={
+  # TODO
+})
+
+print r.json()
+````
+
+````java
+URL obj = new URL("http://api.gofundme.com/partner/v1/consumers/{id}/funds");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+````
+
+`GET /consumers/{id}/funds`
+
+*Get consumer funds*
+
+Get the funds that belong to a consumer
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+id|path|string|true|Consumer Id
+cursor|query|integer|false|What index to retrieve the result from
+limit|query|integer|false|The number of results per page (limit 100, default 20)
+
+
+
+### Responses
+
+Status|Meaning|Description
+---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
+400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
+401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
+403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
+429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
+500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+
+> Example responses
+
+````json
+{
+  "data": [
+    {
+      "id": "string",
+      "url": "string",
+      "title": "string",
+      "description": "string",
+      "goal": 0,
+      "balance": 0,
+      "counts": {
+        "comments": 0,
+        "donations": 0,
+        "updates": 0
+      },
+      "comments_enabled": true,
+      "donations_enabled": true,
+      "status": "string",
+      "created_at": 0
+    }
+  ],
+  "meta": {
+    "cursor": {
+      "previous": 0,
+      "current": 0,
+      "next": 0,
+      "count": 0
+    }
+  }
+}
+````
 ````json
 {
   "error": {
@@ -995,15 +1251,18 @@ CreateFundBody|body|CreateFundBody|true| JSON request body for fund creation
 
 ````json
 {
-  "user_id": "string",
-  "title": "string",
-  "description": "string",
   "category": "string",
   "postal_code": "string",
   "country_code": "string",
   "currency_code": "string",
+  "title": "string",
+  "description": "string",
+  "goal": "string",
   "media": "string",
-  "goal": "string"
+  "user": {
+    "email": "string",
+    "name": "string"
+  }
 }
 ````
 ### Responses
@@ -1163,30 +1422,16 @@ System.out.println(response.toString());
 
 *Launch a Fund*
 
-Launch a newly created GoFundMe fund
+Launch a newly created GoFundMe fund and send user claim email
 
 ### Parameters
 
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
 id|path|string|true|Fund Id
-LaunchFundBody|body|LaunchFundBody|true|JSON request body for launching fund
 
 
 
-> Body parameter
-
-````json
-{
-  "phone_number": "string",
-  "address_line1": "string",
-  "address_line2": "string",
-  "city": "string",
-  "state": "string",
-  "postal_code": "string",
-  "country": "string"
-}
-````
 ### Responses
 
 Status|Meaning|Description
@@ -1364,7 +1609,366 @@ Status|Meaning|Description
 
 ````json
 {
-  "id": "string"
+  "id": "string",
+  "url": "string",
+  "title": "string",
+  "description": "string",
+  "goal": 0,
+  "balance": 0,
+  "counts": {
+    "comments": 0,
+    "donations": 0,
+    "updates": 0
+  },
+  "comments_enabled": true,
+  "donations_enabled": true,
+  "status": "string",
+  "created_at": 0
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## fund.get.user
+
+> Code samples
+
+````shell
+# You can also use wget
+curl -X get http://api.gofundme.com/partner/v1/funds/{id}/user
+````
+
+````http
+GET http://api.gofundme.com/partner/v1/funds/{id}/user HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
+````
+
+````html
+<script>
+  $.ajax({
+    url: 'http://api.gofundme.com/partner/v1/funds/{id}/user',
+    method: 'get',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  })
+</script>
+````
+
+````javascript
+const request = require('node-fetch');
+fetch('http://api.gofundme.com/partner/v1/funds/{id}/user', { method: 'GET'})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+````
+
+````ruby
+require 'rest-client'
+require 'json'
+
+result = RestClient.get 'http://api.gofundme.com/partner/v1/funds/{id}/user', params:
+  {
+    # TODO
+  }
+
+p JSON.parse(result)
+````
+
+````python
+import requests
+
+r = requests.get('http://api.gofundme.com/partner/v1/funds/{id}/user', params={
+  # TODO
+})
+
+print r.json()
+````
+
+````java
+URL obj = new URL("http://api.gofundme.com/partner/v1/funds/{id}/user");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+````
+
+`GET /funds/{id}/user`
+
+*Get Fund User*
+
+Get a single GoFundMe fund user
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+id|path|string|true|Fund Id
+
+
+
+### Responses
+
+Status|Meaning|Description
+---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
+400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
+401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
+403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
+429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
+500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+
+> Example responses
+
+````json
+{
+  "id": "string",
+  "email": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "fund_creation_enabled": true,
+  "status": "string",
+  "created_at": 0
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+````json
+{
+  "error": {
+    "domain": "string",
+    "code": "string",
+    "short_description": "string",
+    "message": "string",
+    "data": {}
+  }
+}
+````
+<aside class="success">
+This operation does not require authentication
+</aside>
+
+## fund.get.beneficiary
+
+> Code samples
+
+````shell
+# You can also use wget
+curl -X get http://api.gofundme.com/partner/v1/funds/{id}/beneficiary
+````
+
+````http
+GET http://api.gofundme.com/partner/v1/funds/{id}/beneficiary HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
+````
+
+````html
+<script>
+  $.ajax({
+    url: 'http://api.gofundme.com/partner/v1/funds/{id}/beneficiary',
+    method: 'get',
+    success: function(data) {
+      console.log(JSON.stringify(data));
+    }
+  })
+</script>
+````
+
+````javascript
+const request = require('node-fetch');
+fetch('http://api.gofundme.com/partner/v1/funds/{id}/beneficiary', { method: 'GET'})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+````
+
+````ruby
+require 'rest-client'
+require 'json'
+
+result = RestClient.get 'http://api.gofundme.com/partner/v1/funds/{id}/beneficiary', params:
+  {
+    # TODO
+  }
+
+p JSON.parse(result)
+````
+
+````python
+import requests
+
+r = requests.get('http://api.gofundme.com/partner/v1/funds/{id}/beneficiary', params={
+  # TODO
+})
+
+print r.json()
+````
+
+````java
+URL obj = new URL("http://api.gofundme.com/partner/v1/funds/{id}/beneficiary");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+````
+
+`GET /funds/{id}/beneficiary`
+
+*Get Fund Beneficiary*
+
+Get a single GoFundMe fund beneficiary
+
+### Parameters
+
+Parameter|In|Type|Required|Description
+---|---|---|---|---|
+id|path|string|true|Fund Id
+
+
+
+### Responses
+
+Status|Meaning|Description
+---|---|---|
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
+400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
+401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
+403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
+429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
+500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+
+> Example responses
+
+````json
+{
+  "id": "string",
+  "email": "string",
+  "first_name": "string",
+  "last_name": "string",
+  "invited_at": 0,
+  "accepted_at": 0
 }
 ````
 ````json
@@ -1533,11 +2137,22 @@ Status|Meaning|Description
 
 ````json
 {
-  "scores": [
+  "data": [
     {
-      "id": "string"
+      "id": "string",
+      "name": "string",
+      "text": "string",
+      "created_at": "string"
     }
-  ]
+  ],
+  "meta": {
+    "cursor": {
+      "previous": 0,
+      "current": 0,
+      "next": 0,
+      "count": 0
+    }
+  }
 }
 ````
 ````json
@@ -1706,11 +2321,22 @@ Status|Meaning|Description
 
 ````json
 {
-  "scores": [
+  "data": [
     {
-      "id": "string"
+      "id": "string",
+      "text": "string",
+      "media_link": "string",
+      "created_at": "string"
     }
-  ]
+  ],
+  "meta": {
+    "cursor": {
+      "previous": 0,
+      "current": 0,
+      "next": 0,
+      "count": 0
+    }
+  }
 }
 ````
 ````json
@@ -1879,358 +2505,23 @@ Status|Meaning|Description
 
 ````json
 {
-  "scores": [
+  "donations": [
     {
-      "id": "string"
+      "id": "string",
+      "amount": "string",
+      "name": "string",
+      "text": "string",
+      "created_at": "string"
     }
-  ]
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-# User
-
-User specific operations
-
-## user.create
-
-> Code samples
-
-````shell
-# You can also use wget
-curl -X post http://api.gofundme.com/partner/v1/users
-````
-
-````http
-POST http://api.gofundme.com/partner/v1/users HTTP/1.1
-Host: api.gofundme.com
-Content-Type: application/json
-Accept: application/json
-````
-
-````html
-<script>
-  $.ajax({
-    url: 'http://api.gofundme.com/partner/v1/users',
-    method: 'post',
-    success: function(data) {
-      console.log(JSON.stringify(data));
+  ],
+  "meta": {
+    "cursor": {
+      "previous": 0,
+      "current": 0,
+      "next": 0,
+      "count": 0
     }
-  })
-</script>
-````
-
-````javascript
-const request = require('node-fetch');
-fetch('http://api.gofundme.com/partner/v1/users', { method: 'POST'})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-````
-
-````ruby
-require 'rest-client'
-require 'json'
-
-result = RestClient.post 'http://api.gofundme.com/partner/v1/users', params:
-  {
-    # TODO
   }
-
-p JSON.parse(result)
-````
-
-````python
-import requests
-
-r = requests.post('http://api.gofundme.com/partner/v1/users', params={
-  # TODO
-})
-
-print r.json()
-````
-
-````java
-URL obj = new URL("http://api.gofundme.com/partner/v1/users");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("POST");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-````
-
-`POST /users`
-
-*Create User*
-
-Creates a new GoFundMe user account
-
-### Parameters
-
-Parameter|In|Type|Required|Description
----|---|---|---|---|
-CreateUserBody|body|CreateUserBody|true| JSON request body for user creation
-
-
-
-> Body parameter
-
-````json
-{
-  "email": "string",
-  "name": "string",
-  "password": "string"
-}
-````
-### Responses
-
-Status|Meaning|Description
----|---|---|
-201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|JSON response body for user creation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
-
-> Example responses
-
-````json
-{
-  "id": "string"
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-<aside class="success">
-This operation does not require authentication
-</aside>
-
-## user.get
-
-> Code samples
-
-````shell
-# You can also use wget
-curl -X get http://api.gofundme.com/partner/v1/users/{id}
-````
-
-````http
-GET http://api.gofundme.com/partner/v1/users/{id} HTTP/1.1
-Host: api.gofundme.com
-Content-Type: application/json
-Accept: application/json
-````
-
-````html
-<script>
-  $.ajax({
-    url: 'http://api.gofundme.com/partner/v1/users/{id}',
-    method: 'get',
-    success: function(data) {
-      console.log(JSON.stringify(data));
-    }
-  })
-</script>
-````
-
-````javascript
-const request = require('node-fetch');
-fetch('http://api.gofundme.com/partner/v1/users/{id}', { method: 'GET'})
-.then(function(res) {
-    return res.json();
-}).then(function(body) {
-    console.log(body);
-});
-````
-
-````ruby
-require 'rest-client'
-require 'json'
-
-result = RestClient.get 'http://api.gofundme.com/partner/v1/users/{id}', params:
-  {
-    # TODO
-  }
-
-p JSON.parse(result)
-````
-
-````python
-import requests
-
-r = requests.get('http://api.gofundme.com/partner/v1/users/{id}', params={
-  # TODO
-})
-
-print r.json()
-````
-
-````java
-URL obj = new URL("http://api.gofundme.com/partner/v1/users/{id}");
-HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-con.setRequestMethod("GET");
-int responseCode = con.getResponseCode();
-BufferedReader in = new BufferedReader(
-    new InputStreamReader(con.getInputStream()));
-String inputLine;
-StringBuffer response = new StringBuffer();
-while ((inputLine = in.readLine()) != null) {
-    response.append(inputLine);
-}
-in.close();
-System.out.println(response.toString());
-````
-
-`GET /users/{id}`
-
-*Get User*
-
-Get a single GoFundMe user account
-
-### Parameters
-
-Parameter|In|Type|Required|Description
----|---|---|---|---|
-id|path|string|true|User Id
-
-
-
-### Responses
-
-Status|Meaning|Description
----|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
-
-> Example responses
-
-````json
-{
-  "id": "string"
 }
 ````
 ````json
