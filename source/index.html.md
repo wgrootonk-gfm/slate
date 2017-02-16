@@ -1,5 +1,5 @@
 ---
-title: GFM Partner API v0.5.0
+title: GFM Partner API
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -16,7 +16,7 @@ includes:
 search: true
 ---
 
-# GFM Partner API v0.5.0
+# GFM Partner API
 
 Partner API integration for GoFundMe services
 
