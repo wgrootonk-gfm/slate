@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Partner API Documentation",
   "scripts": {
-    "fetch-swagger-json": "curl https://api.gfm-test01.com/partner/v1/swaggerdocs > tmp\\api-docs.json",
+    "fetch-swagger-json": "curl https://api.gfm-test01.com/partner/v1/swaggerdocs > tmp/api-docs.json",
     "swagger-markdown": "npm run fetch-swagger-json && node swagger-md.js"
   },
   "repository": {
