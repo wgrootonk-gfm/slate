@@ -55,11 +55,6 @@ a {
 .content table tr:nth-child(even)>td {
     background-color: #f4f6eb;
 }
-.content aside.success {
-    background-color: #96b73d;
-    text-shadow: none;
-    color: #fff;
-}
 
 /* RIGHT COLUMN */
 .lang-selector {
@@ -75,28 +70,16 @@ a {
     background: #5d8000;
     background-image: url('../images/blueprint.png');
 }
-// .content pre {
-//     background: #455f00;
-//     margin: 0 2.5%;
-//     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.32);
-//     width: 45%;
-// }
-// .content blockquote {
-//     background-color: #5d8000;
-//     padding: 2em 28px 0 28px;
-//     text-shadow:none;
-// }
-// .content blockquote>p {
-//     background-color: #5d8000;
-//     color: #fff;
-//     font-size: 16px;
-//     font-weight: 600;
-//     border-top: none;
-//     border-bottom: none;
-// }
-// .highlight, .highlight .w {
-//     background-color: #455f00;
-// }
-// .content pre>code {
-//    font-weight: 600;
-// }
+
+.content {
+    aside {
+        text-shadow: none;
+        color: #fff;
+        &.warning {
+            text-shadow: none;
+        }
+        &.success {
+            text-shadow: none;
+        }
+    }
+}
