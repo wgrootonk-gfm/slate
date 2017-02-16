@@ -21,13 +21,15 @@ The system will attempt to gracefully catch the details of the error and the con
 ````
 So let's break down this response:
 
-  - **domain** is the service in which returned the error. This should always be "partner".
-  - **code** is an integer value that references a specific error
-  - **short_description** gives a short informative message 
-  - **message** is an optional value that typically provides a human readable string
-  - **data** when applicable the system may attempt to send data around the error typically this can be used to take further action to prevent the error
+Property|Type|Required|Description
+---|---|---|---|
+***domain***|string|true|The service in which returned the error (Partner)
+***code***|integer|true|Numeric value representing a specific error
+***short_description***|string|true|Short informative description 
+***message***|string|false|Provides a human readable string
+***data***|object|false|Data specific to the action taken
 
-> JWT Authentication Failure
+> Example JWT Authentication Failure
 
 ````json
 {  
