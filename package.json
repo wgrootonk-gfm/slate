@@ -1,0 +1,18 @@
+{
+  "name": "partner-api-documentation",
+  "version": "1.0.0",
+  "description": "Partner API Documentation",
+  "scripts": {
+    "fetch-swagger-json": "curl https:\/\/api.gfm-test01.com\/partner\/v1\/swaggerdocs > tmp\\api-docs.json",
+    "json-slate-markdown": "node_modules\\.bin\\widdershins tmp\\api-docs.json -o tmp\\api-docs.md",
+    "swagger-markdown": "npm run fetch-swagger-json && npm run json-slate-markdown"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gofundmedevs/slate.git"
+  },
+  "homepage": "developer.gofundme.com",
+  "devDependencies": {
+    "widdershins": "^1.0.8"
+  }
+}
