@@ -126,8 +126,7 @@ CreateBeneficiaryBody|body|CreateBeneficiaryBody|true|JSON request body for bene
 {
   "fund_id": "string",
   "email": "string",
-  "first_name": "string",
-  "last_name": "string"
+  "name": "string"
 }
 ````
 ### Responses
@@ -147,10 +146,9 @@ Status|Meaning|Description
 {
   "id": "string",
   "email": "string",
-  "first_name": "string",
-  "last_name": "string",
-  "invited_at": 0,
-  "accepted_at": 0
+  "name": "string",
+  "invited_at": "string",
+  "accepted_at": "string"
 }
 ````
 ````json
@@ -1045,8 +1043,9 @@ Get the funds that belong to a consumer
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
 id|path|string|true|Consumer Id
-cursor|query|integer|false|What index to retrieve the result from
-limit|query|integer|false|The number of results per page (limit 100, default 20)
+before|query|string|false|A cursor; retrieves the previous rows before this ID
+after|query|string|false|A cursor; retrieves the next rows after this ID
+limit|query|integer|false|The maximum number of results in the result set (limit 100, default 20)
 
 
 
@@ -1081,15 +1080,12 @@ Status|Meaning|Description
       "comments_enabled": true,
       "donations_enabled": true,
       "status": "string",
-      "created_at": 0
+      "created_at": "string"
     }
   ],
   "meta": {
     "cursor": {
-      "previous": 0,
-      "current": 0,
-      "next": 0,
-      "count": 0
+      "has_more": true
     }
   }
 }
@@ -1280,7 +1276,21 @@ Status|Meaning|Description
 
 ````json
 {
-  "id": "string"
+  "id": "string",
+  "url": "string",
+  "title": "string",
+  "description": "string",
+  "goal": 0,
+  "balance": 0,
+  "counts": {
+    "comments": 0,
+    "donations": 0,
+    "updates": 0
+  },
+  "comments_enabled": true,
+  "donations_enabled": true,
+  "status": "string",
+  "created_at": "string"
 }
 ````
 ````json
@@ -1623,7 +1633,7 @@ Status|Meaning|Description
   "comments_enabled": true,
   "donations_enabled": true,
   "status": "string",
-  "created_at": 0
+  "created_at": "string"
 }
 ````
 ````json
@@ -1792,11 +1802,10 @@ Status|Meaning|Description
 {
   "id": "string",
   "email": "string",
-  "first_name": "string",
-  "last_name": "string",
+  "name": "string",
   "fund_creation_enabled": true,
   "status": "string",
-  "created_at": 0
+  "created_at": "string"
 }
 ````
 ````json
@@ -1965,10 +1974,9 @@ Status|Meaning|Description
 {
   "id": "string",
   "email": "string",
-  "first_name": "string",
-  "last_name": "string",
-  "invited_at": 0,
-  "accepted_at": 0
+  "name": "string",
+  "invited_at": "string",
+  "accepted_at": "string"
 }
 ````
 ````json
@@ -2117,8 +2125,9 @@ Get comments for a given fund
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
 id|path|string|true|Fund Id
-page|query|integer|false|The page number to retrieve
-page_size|query|integer|false|The number of results per page (limit 100, default 20)
+before|query|string|false|A cursor; retrieves the previous rows before this ID
+after|query|string|false|A cursor; retrieves the next rows after this ID
+limit|query|integer|false|The maximum number of results in the result set (limit 100, default 20)
 
 
 
@@ -2147,10 +2156,7 @@ Status|Meaning|Description
   ],
   "meta": {
     "cursor": {
-      "previous": 0,
-      "current": 0,
-      "next": 0,
-      "count": 0
+      "has_more": true
     }
   }
 }
@@ -2301,8 +2307,9 @@ Get updates for a given fund
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
 id|path|string|true|Fund Id
-page|query|integer|false|The page number to retrieve
-page_size|query|integer|false|The number of results per page (limit 100, default 20)
+before|query|string|false|A cursor; retrieves the previous rows before this ID
+after|query|string|false|A cursor; retrieves the next rows after this ID
+limit|query|integer|false|The maximum number of results in the result set (limit 100, default 20)
 
 
 
@@ -2325,16 +2332,12 @@ Status|Meaning|Description
     {
       "id": "string",
       "text": "string",
-      "media_link": "string",
       "created_at": "string"
     }
   ],
   "meta": {
     "cursor": {
-      "previous": 0,
-      "current": 0,
-      "next": 0,
-      "count": 0
+      "has_more": true
     }
   }
 }
@@ -2485,8 +2488,9 @@ Get donations for a given fund
 Parameter|In|Type|Required|Description
 ---|---|---|---|---|
 id|path|string|true|Fund Id
-page|query|integer|false|The page number to retrieve
-page_size|query|integer|false|The number of results per page (limit 100, default 20)
+before|query|string|false|A cursor; retrieves the previous rows before this ID
+after|query|string|false|A cursor; retrieves the next rows after this ID
+limit|query|integer|false|The maximum number of results in the result set (limit 100, default 20)
 
 
 
@@ -2516,10 +2520,7 @@ Status|Meaning|Description
   ],
   "meta": {
     "cursor": {
-      "previous": 0,
-      "current": 0,
-      "next": 0,
-      "count": 0
+      "has_more": true
     }
   }
 }
