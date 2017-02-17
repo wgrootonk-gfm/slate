@@ -119,7 +119,7 @@ Creates a new GoFundMe consumer account.
 
 ### Parameters
 
-Dotted properties (eg. address.city) are subproperties.
+Dotted properties (eg. address.city) are sub-properties.
 
 Parameter|In|Description
 ---|---|---|
@@ -165,7 +165,7 @@ address.country_code|body|Country code ISO 3166-1 alpha-2
 
 ### Response
 
-Dotted properties (eg. address.city) are subproperties.
+Dotted properties (eg. address.city) are sub-properties.
 
 Parameter|Description
 ---|---|
@@ -243,7 +243,7 @@ id<br>*required*|path|Consumer Id
 
 ### Response
 
-Dotted properties (eg. address.city) are subproperties.
+Dotted properties (eg. address.city) are sub-properties.
 
 Parameter|Description
 ---|---|
@@ -314,7 +314,7 @@ Edits an existing GoFundMe consumer account
 
 ### Parameters
 
-Dotted properties (eg. address.city) are subproperties.
+Dotted properties (eg. address.city) are sub-properties.
 
 Parameter|In|Description
 ---|---|---|
@@ -530,7 +530,7 @@ Creates a new GoFundMe fund
 
 ### Parameters
 
-Dotted properties (eg. user.email) are subproperties.
+Dotted properties (eg. user.email) are sub-properties.
 
 Parameter|In|Description
 ---|---|---|
@@ -572,7 +572,7 @@ media|body|Main image or video
 
 ### Response
 
-Dotted properties (eg. counts.comments) are subproperties.
+Dotted properties (eg. counts.comments) are sub-properties.
 
 Parameter|Description
 ---|---|
@@ -649,104 +649,58 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3O
 
 Get a single GoFundMe fund
 
-### Parameters
-
-Parameter|In|Type|Required|Description
+Parameter|In|Description
 ---|---|---|---|---|
-id|path|string|true|Fund Id
+id<br>*required*|path|Fund Id
 
-
-
-### Responses
-
-Status|Meaning|Description
----|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
-
-> Example responses
+> Example response
 
 ````json
 {
-  "id": "string",
-  "url": "string",
-  "title": "string",
-  "description": "string",
-  "goal": 0,
-  "balance": 0,
+  "id": "Q2aWYAXtQK8A",
+  "url": "example-fund",
+  "title": "Example Fund",
+  "description": "This is an example fund",
+  "category": "MEMORIALS",
+  "currency_code": "USD",
+  "goal": 500,
+  "media": "https://example.org/test.jpg",
+  "balance": 100,
   "counts": {
-    "comments": 0,
-    "donations": 0,
-    "updates": 0
+    "comments": 2,
+    "donations": 22,
+    "updates": 1
   },
   "comments_enabled": true,
   "donations_enabled": true,
-  "status": "string",
-  "created_at": "string"
+  "status": "ACTIVE",
+  "created_at": "2017-02-17T00:12:16Z"
 }
 ````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-<aside class="success">
-This operation does not require authentication
-</aside>
+
+### Response
+
+Dotted properties (eg. counts.comments) are sub-properties.
+
+Parameter|Description
+---|---|
+id<br>*string*|Fund ID
+email<br>*string*|Email
+name<br>*string*|Full name
+description<br>*string*|Description
+category<br>*string*|Category
+currency_code<br>*string*|User's currency code ISO 4217 alpha-3
+goal<br>*integer*|Goal amount in user's currency
+media<br>*string*|Main image or video
+balance<br>*integer*|Currently raised amount in user's currency
+counts.comments<br>*integer*|How many comments the campaign has
+counts.donations<br>*integer*|How many donations the campaign has
+counts.updates<br>*integer*|How many updates the campaign has
+comments_enabled<br>*boolean*|Whether comments are enabled or not
+donations_enabled<br>*boolean*|Whether the fund is accepting donations or not
+status<br>*string, ACTIVE or INACTIVE*|Fund status, visibility to the public
+created_at<br>*timestamp*|When the fund was created
+
 
 ## fund.get.user
 
@@ -754,14 +708,16 @@ This operation does not require authentication
 
 ````shell
 # You can also use wget
-curl -X get http://api.gofundme.com/partner/v1/funds/{id}/user
+curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/user \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
 ````
 
 ````http
-GET http://api.gofundme.com/partner/v1/funds/{id}/user HTTP/1.1
+GET http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/user HTTP/1.1
 Host: api.gofundme.com
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ````
 
 `GET /funds/{id}/user`
@@ -772,93 +728,36 @@ Get a single GoFundMe fund user
 
 ### Parameters
 
-Parameter|In|Type|Required|Description
----|---|---|---|---|
-id|path|string|true|Fund Id
-
-
-
-### Responses
-
-Status|Meaning|Description
+Parameter|In|Description
 ---|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+id<br>*required*|path|Fund Id
 
 > Example responses
 
 ````json
 {
-  "id": "string",
-  "email": "string",
-  "name": "string",
+  "id": "Q2aWYAXtQK8A",
+  "email": "jjin@example.org",
+  "name": "John Jin",
   "fund_creation_enabled": true,
-  "status": "string",
-  "created_at": "string"
+  "status": "ACTIVE",
+  "created_at": "2017-02-17T00:12:16Z"
 }
 ````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-<aside class="success">
-This operation does not require authentication
-</aside>
+
+### Response
+
+Dotted properties (eg. counts.comments) are sub-properties.
+
+Parameter|Description
+---|---|
+id<br>*string*|User Id
+email<br>*string*|User's email
+name<br>*string*|User's name
+fund_creation_enabled<br>*boolean*|User can create new funds
+status<br>*string, ACTIVE or INACTIVE*|User status, visibility to the public
+created_at<br>*timestamp*|When the user was created
+
 
 ## fund.get.beneficiary
 
@@ -866,14 +765,16 @@ This operation does not require authentication
 
 ````shell
 # You can also use wget
-curl -X get http://api.gofundme.com/partner/v1/funds/{id}/beneficiary
+curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/beneficiary \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
 ````
 
 ````http
-GET http://api.gofundme.com/partner/v1/funds/{id}/beneficiary HTTP/1.1
+GET http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/beneficiary HTTP/1.1
 Host: api.gofundme.com
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ````
 
 `GET /funds/{id}/beneficiary`
@@ -884,92 +785,34 @@ Get a single GoFundMe fund beneficiary
 
 ### Parameters
 
-Parameter|In|Type|Required|Description
----|---|---|---|---|
-id|path|string|true|Fund Id
-
-
-
-### Responses
-
-Status|Meaning|Description
+Parameter|In|Description
 ---|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+id<br>*required*|path|Fund Id
 
 > Example responses
 
 ````json
 {
-  "id": "string",
-  "email": "string",
-  "name": "string",
-  "invited_at": "string",
-  "accepted_at": "string"
+  "id": "Q2aWYAXtQK8A",
+  "email": "jjin@example.org",
+  "name": "John Jin",
+  "invited_at": "2017-02-16T00:03:39Z",
+  "accepted_at": "2017-02-17T00:12:16Z"
 }
 ````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-<aside class="success">
-This operation does not require authentication
-</aside>
+
+### Response
+
+Dotted properties (eg. counts.comments) are sub-properties.
+
+Parameter|Description
+---|---|
+id<br>*string*|User Id
+email<br>*string*|User's email
+name<br>*string*|User's name
+invited_at<br>*timestamp*|When the beneficiary invite email was sent
+accepted_at<br>*timestamp*|When beneficiary completed beneficiary claim flow 
+
 
 ## fund.get.comments
 
