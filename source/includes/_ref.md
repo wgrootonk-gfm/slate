@@ -107,7 +107,8 @@ Creates a new GoFundMe consumer account.
   "tax_id": "123456",
   "phone": "14085551234",
   "address": {
-    "street_line1": "123 Main St.", "street_line2": "Apt 123",
+    "street_line1": "123 Main St.",
+    "street_line2": "Apt 123",
     "city": "San Diego",
     "region": "CA",
     "postal_code": "92123",
@@ -333,6 +334,10 @@ address.region|body|State/province
 address.postal_code|body|Postal/zip code
 address.country_code|body|Country code ISO 3166-1 alpha-2
 
+<aside class="success">
+This operation does not return a response body.
+</aside>
+
 ## consumer.reissue
 
 > Code samples
@@ -424,11 +429,14 @@ limit|query|The maximum number of results in the result set (limit 100, default 
 {
   "data": [
     {
-      "id": "Q2aWYAXt/QK8A",
+      "id": "Q2aWYAXtQK8A",
       "url": "example-fund",
       "title": "Example Fund",
       "description": "This is an example fund",
+      "category": "MEMORIALS",
+      "currency_code": "USD",
       "goal": 500,
+      "media": "https://example.org/test.jpg",
       "balance": 100,
       "counts": {
         "comments": 2,
@@ -457,7 +465,10 @@ id<br>*string*|Fund ID
 email<br>*string*|Email
 name<br>*string*|Full name
 description<br>*string*|Description
+category<br>*string*|Category
+currency_code<br>*string*|User's currency code ISO 4217 alpha-3
 goal<br>*integer*|Goal amount in user's currency
+media<br>*string*|Main image or video
 balance<br>*integer*|Currently raised amount in user's currency
 counts.comments<br>*integer*|How many comments the campaign has
 counts.donations<br>*integer*|How many donations the campaign has
@@ -477,14 +488,16 @@ Fund specific operations
 
 ````shell
 # You can also use wget
-curl -X post http://api.gofundme.com/partner/v1/funds
+curl -X post https://api.gofundme.com/partner/v1/funds \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
 ````
 
 ````http
-POST http://api.gofundme.com/partner/v1/funds HTTP/1.1
+POST https://api.gofundme.com/partner/v1/funds HTTP/1.1
 Host: api.gofundme.com
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ````
 
 `POST /funds`
@@ -493,137 +506,105 @@ Accept: application/json
 
 Creates a new GoFundMe fund
 
-### Parameters
-
-Parameter|In|Type|Required|Description
----|---|---|---|---|
-CreateFundBody|body|CreateFundBody|true| JSON request body for fund creation
-
-
-
 > Body parameter
 
 ````json
 {
-  "category": "string",
-  "postal_code": "string",
-  "country_code": "string",
-  "currency_code": "string",
-  "title": "string",
-  "description": "string",
-  "goal": "string",
-  "media": "string",
   "user": {
-    "email": "string",
-    "name": "string"
-  }
+    "email": "jjin@example.org",
+    "name": "John Jin"
+  },
+  "category": "MEMORIALS",
+  "postal_code": "92123",
+  "country_code": "US",
+  "currency_code": "USD",
+  "title": "Example Campaign",
+  "description": "This is an example campaign.",
+  "goal": 500,
+  "media": "https://example.org/test-image.png"
 }
 ````
-### Responses
 
-Status|Meaning|Description
----|---|---|
-201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|JSON response body for fund creation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
+### Parameters
 
-> Example responses
+Dotted properties (eg. user.email) are subproperties.
+
+Parameter|In|Description
+---|---|---|---|---|
+user.email<br>*required*|body|User's email
+user.name<br>*required*|body|User's name
+category<br>*required*|body|Category name
+postal_code<br>*required*|body|User's postal address code
+country_code<br>*required*|body|User's country code ISO 3166-1 alpha-2
+currency_code<br>*required*|body|User's currency code ISO 4217 alpha-3
+title<br>*required*|body|Fund title
+description|body|Fund description
+goal|body|Amount that is wished to be raised
+media|body|Main image or video
+
+> Example response
 
 ````json
 {
-  "id": "string",
-  "url": "string",
-  "title": "string",
-  "description": "string",
-  "goal": 0,
-  "balance": 0,
+  "id": "Q2aWYAXtQK8A",
+  "url": "example-fund",
+  "title": "Example Fund",
+  "description": "This is an example fund",
+  "category": "MEMORIALS",
+  "currency_code": "USD",
+  "goal": 500,
+  "media": "https://example.org/test.jpg",
+  "balance": 100,
   "counts": {
-    "comments": 0,
-    "donations": 0,
-    "updates": 0
+    "comments": 2,
+    "donations": 22,
+    "updates": 1
   },
   "comments_enabled": true,
   "donations_enabled": true,
-  "status": "string",
-  "created_at": "string"
+  "status": "ACTIVE",
+  "created_at": "2017-02-17T00:12:16Z"
 }
 ````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-<aside class="success">
-This operation does not require authentication
-</aside>
+
+### Response
+
+Dotted properties (eg. counts.comments) are subproperties.
+
+Parameter|Description
+---|---|---|---|---|
+id<br>*string*|Fund ID
+email<br>*string*|Email
+name<br>*string*|Full name
+description<br>*string*|Description
+category<br>*string*|Category
+currency_code<br>*string*|User's currency code ISO 4217 alpha-3
+goal<br>*integer*|Goal amount in user's currency
+media<br>*string*|Main image or video
+balance<br>*integer*|Currently raised amount in user's currency
+counts.comments<br>*integer*|How many comments the campaign has
+counts.donations<br>*integer*|How many donations the campaign has
+counts.updates<br>*integer*|How many updates the campaign has
+comments_enabled<br>*boolean*|Whether comments are enabled or not
+donations_enabled<br>*boolean*|Whether the fund is accepting donations or not
+status<br>*string, ACTIVE or INACTIVE*|Fund status, visibility to the public
+created_at<br>*timestamp*|When the fund was created
 
 ## fund.launch
 
 > Code samples
 
 ````shell
-# You can also use wget
-curl -X post http://api.gofundme.com/partner/v1/funds/{id}/launch
+curl -X post http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/launch \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
 ````
 
 ````http
-POST http://api.gofundme.com/partner/v1/funds/{id}/launch HTTP/1.1
+POST http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/launch HTTP/1.1
 Host: api.gofundme.com
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ````
 
 `POST /funds/{id}/launch`
@@ -634,82 +615,12 @@ Launch a newly created GoFundMe fund and send user claim email
 
 ### Parameters
 
-Parameter|In|Type|Required|Description
+Parameter|In|Description
 ---|---|---|---|---|
-id|path|string|true|Fund Id
+id<br>*required*|path|Fund Id
 
-
-
-### Responses
-
-Status|Meaning|Description
----|---|---|
-204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)|Successful Operation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
-
-> Example responses
-
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
 <aside class="success">
-This operation does not require authentication
+This operation does not return a response body.
 </aside>
 
 ## fund.get
@@ -717,15 +628,16 @@ This operation does not require authentication
 > Code samples
 
 ````shell
-# You can also use wget
-curl -X get http://api.gofundme.com/partner/v1/funds/{id}
+curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
 ````
 
 ````http
-GET http://api.gofundme.com/partner/v1/funds/{id} HTTP/1.1
+GET http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A HTTP/1.1
 Host: api.gofundme.com
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ````
 
 `GET /funds/{id}`
