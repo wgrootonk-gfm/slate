@@ -672,7 +672,7 @@ If both `before` and `after` are passed in, only `before` will be used.
 
 <p>Beneficiary specific operations</p>
 
-<h2 id="beneficiary-create">beneficiary.create</h2>
+          <h2 id="beneficiary-create">beneficiary.create</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -772,11 +772,11 @@ If both `before` and `after` are passed in, only `before` will be used.
 </tr>
 </tbody></table>
 
-<h1 id="consumer">Consumer</h1>
+          <h1 id="consumer">Consumer</h1>
 
 <p>Consumer specific operations</p>
 
-<h2 id="consumer-create">consumer.create</h2>
+          <h2 id="consumer-create">consumer.create</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -1000,7 +1000,7 @@ If both `before` and `after` are passed in, only `before` will be used.
 </tr>
 </tbody></table>
 
-<h2 id="consumer-get">consumer.get</h2>
+          <h2 id="consumer-get">consumer.get</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -1130,7 +1130,7 @@ If both `before` and `after` are passed in, only `before` will be used.
 </tr>
 </tbody></table>
 
-<h2 id="consumer-edit">consumer.edit</h2>
+          <h2 id="consumer-edit">consumer.edit</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -1265,7 +1265,7 @@ curl -X put https://api.gofundme.com/partner/v1/consumers/FUe9zttHXkaOag <span c
 This operation does not return a response body.
 </aside>
 
-<h2 id="consumer-reissue">consumer.reissue</h2>
+          <h2 id="consumer-reissue">consumer.reissue</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -1333,7 +1333,7 @@ This operation does not return a response body.
 </tr>
 </tbody></table>
 
-<h2 id="consumer-funds">consumer.funds</h2>
+          <h2 id="consumer-funds">consumer.funds</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -1493,11 +1493,11 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
 </tr>
 </tbody></table>
 
-<h1 id="fund">Fund</h1>
+          <h1 id="fund">Fund</h1>
 
 <p>Fund specific operations</p>
 
-<h2 id="fund-create">fund.create</h2>
+          <h2 id="fund-create">fund.create</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -1698,7 +1698,7 @@ curl -X post https://api.gofundme.com/partner/v1/funds <span class="se">\</span>
 </tr>
 </tbody></table>
 
-<h2 id="fund-launch">fund.launch</h2>
+          <h2 id="fund-launch">fund.launch</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -1737,7 +1737,7 @@ curl -X post https://api.gofundme.com/partner/v1/funds <span class="se">\</span>
 This operation does not return a response body.
 </aside>
 
-<h2 id="fund-get">fund.get</h2>
+          <h2 id="fund-get">fund.get</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -1870,7 +1870,7 @@ This operation does not return a response body.
 </tr>
 </tbody></table>
 
-<h2 id="fund-get-user">fund.get.user</h2>
+          <h2 id="fund-get-user">fund.get.user</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -1954,7 +1954,7 @@ curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/user <span cla
 </tr>
 </tbody></table>
 
-<h2 id="fund-get-beneficiary">fund.get.beneficiary</h2>
+          <h2 id="fund-get-beneficiary">fund.get.beneficiary</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -2033,7 +2033,7 @@ curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/beneficiary <s
 </tr>
 </tbody></table>
 
-<h2 id="fund-get-comments">fund.get.comments</h2>
+          <h2 id="fund-get-comments">fund.get.comments</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -2129,98 +2129,7 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
 </tr>
 </tbody></table>
 
-<h2 id="fund-get-updates">fund.get.updates</h2>
-
-<blockquote>
-<p>Code samples</p>
-</blockquote>
-<pre class="highlight shell"><code>curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/updates <span class="se">\</span>
--H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
-</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/updates</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span>
-</code></pre>
-<p><code class="prettyprint">GET /funds/{id}/updates</code></p>
-
-<p><em>Get Fund Updates</em></p>
-
-<p>Get updates for a given fund</p>
-
-<h3 id="parameters">Parameters</h3>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id<br><em>required</em></td>
-<td>path</td>
-<td>Fund Id</td>
-</tr>
-<tr>
-<td>before</td>
-<td>query</td>
-<td>A cursor; retrieves the previous rows before this ID</td>
-</tr>
-<tr>
-<td>after</td>
-<td>query</td>
-<td>A cursor; retrieves the next rows after this ID</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>query</td>
-<td>The maximum number of results in the result set (limit 100, default 20)</td>
-</tr>
-</tbody></table>
-
-<blockquote>
-<p>Example response</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SGoXQkhfl"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello!"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="response">Response</h3>
-
-<p>This is a <a href="#pagination">paginated collection</a>.
-Responses will be contained inside a <code class="prettyprint">data</code> array, while metadata will be contained inside a <code class="prettyprint">meta</code> object.</p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id<br><em>string</em></td>
-<td>Update ID</td>
-</tr>
-<tr>
-<td>text<br><em>string</em></td>
-<td>Update text (HTML)</td>
-</tr>
-<tr>
-<td>created_at<br><em>timestamp</em></td>
-<td>When the update was created</td>
-</tr>
-</tbody></table>
-
-<h2 id="fund-get-donations">fund.get.donations</h2>
+          <h2 id="fund-get-donations">fund.get.donations</h2>
 
 <blockquote>
 <p>Code samples</p>
@@ -2318,6 +2227,97 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
 <tr>
 <td>created_at<br><em>timestamp</em></td>
 <td>When the donation was made</td>
+</tr>
+</tbody></table>
+
+          <h2 id="fund-get-updates">fund.get.updates</h2>
+
+<blockquote>
+<p>Code samples</p>
+</blockquote>
+<pre class="highlight shell"><code>curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/updates <span class="se">\</span>
+-H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
+</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/updates</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ</span>
+</code></pre>
+<p><code class="prettyprint">GET /funds/{id}/updates</code></p>
+
+<p><em>Get Fund Updates</em></p>
+
+<p>Get updates for a given fund</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id<br><em>required</em></td>
+<td>path</td>
+<td>Fund Id</td>
+</tr>
+<tr>
+<td>before</td>
+<td>query</td>
+<td>A cursor; retrieves the previous rows before this ID</td>
+</tr>
+<tr>
+<td>after</td>
+<td>query</td>
+<td>A cursor; retrieves the next rows after this ID</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>query</td>
+<td>The maximum number of results in the result set (limit 100, default 20)</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Example response</p>
+</blockquote>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SGoXQkhfl"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hello!"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"has_more"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<h3 id="response">Response</h3>
+
+<p>This is a <a href="#pagination">paginated collection</a>.
+Responses will be contained inside a <code class="prettyprint">data</code> array, while metadata will be contained inside a <code class="prettyprint">meta</code> object.</p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id<br><em>string</em></td>
+<td>Update ID</td>
+</tr>
+<tr>
+<td>text<br><em>string</em></td>
+<td>Update text (HTML)</td>
+</tr>
+<tr>
+<td>created_at<br><em>timestamp</em></td>
+<td>When the update was created</td>
 </tr>
 </tbody></table>
 
