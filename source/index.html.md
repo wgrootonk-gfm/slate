@@ -10,6 +10,7 @@ includes:
   - auth
   - errors
   - pagination
+  - versioning
   - reference/beneficiary/root
   - reference/beneficiary/create
   - reference/consumer/root
