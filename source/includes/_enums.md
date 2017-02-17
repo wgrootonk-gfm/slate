@@ -29,7 +29,7 @@ Value|Description
 `WEDDINGS`|Weddings & Honeymoons|
 
 ## Fund Status
-Fund resources can expect to have a simple return property called `status`. Generally this field returns whether a fund is discoverable.
+Fund resources can expect to have a simple return property called `status`. Generally this field returns a value that represents whether a fund is discoverable or not.
 
 Value|Description
 ---|---|
