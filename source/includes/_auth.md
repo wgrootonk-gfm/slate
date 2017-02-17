@@ -8,11 +8,11 @@ The partner API will expect the ***Authorization*** header to be present when ac
 
 ````shell
 # Pass auth header on each request
-curl -X get http://api.gofundme.com/partner -H "Authorization: Bearer <token>"
+curl -X get https://api.gofundme.com/partner -H "Authorization: Bearer <token>"
 ````
 
 ````http
-GET http://api.gofundme.com/partner HTTP/1.1
+GET https://api.gofundme.com/partner HTTP/1.1
 Host: api.gofundme.com
 Content-Type: application/json
 Accept: application/json

@@ -38,7 +38,7 @@ Creates a new GoFundMe beneficiary
 ### Parameters
 
 Parameter|In|Description
----|---|---|---|---|
+---|---|---|
 fund\_id<br>*required*|body|Fund ID
 email<br>*required*|body|Email
 name<br>*required*|body|Full name
@@ -58,7 +58,7 @@ name<br>*required*|body|Full name
 
 ### Response
 Parameter|Description
----|---|---|---|---|
+---|---|
 id<br>*string*|Beneficiary ID
 fund\_id<br>*string*|Fund ID
 email<br>*string*|Email
@@ -122,7 +122,7 @@ Creates a new GoFundMe consumer account.
 Dotted properties (eg. address.city) are subproperties.
 
 Parameter|In|Description
----|---|---|---|---|
+---|---|---|
 email<br>*required*|body|Email
 name<br>*required*|body|Full name
 description<br>*required*|body|Description
@@ -168,7 +168,7 @@ address.country_code|body|Country code ISO 3166-1 alpha-2
 Dotted properties (eg. address.city) are subproperties.
 
 Parameter|Description
----|---|---|---|---|
+---|---|
 id<br>*string*|Consumer ID
 secret<br>*string*|Consumer API secret
 email<br>*string*|Email
@@ -213,7 +213,7 @@ Get a single GoFundMe consumer
 ### Parameters
 
 Parameter|Type|Description
----|---|---|---|---|
+---|---|---|
 id<br>*required*|path|Consumer Id
 
 
@@ -246,7 +246,7 @@ id<br>*required*|path|Consumer Id
 Dotted properties (eg. address.city) are subproperties.
 
 Parameter|Description
----|---|---|---|---|
+---|---|
 id<br>*string*|Consumer ID
 email<br>*string*|Email
 name<br>*string*|Full name
@@ -317,7 +317,7 @@ Edits an existing GoFundMe consumer account
 Dotted properties (eg. address.city) are subproperties.
 
 Parameter|In|Description
----|---|---|---|---|
+---|---|---|
 id<br>*required*|body|Consumer ID
 email|body|Email
 name|body|Full name
@@ -372,7 +372,7 @@ Reissue a GoFundMe consumer secret
 ### Parameters
 
 Parameter|In|Description
----|---|---|---|---|
+---|---|---|
 id<br>*required*|body|Consumer ID
 
 > Example response
@@ -387,7 +387,7 @@ id<br>*required*|body|Consumer ID
 ### Response
 
 Parameter|Description
----|---|---|---|---|
+---|---|
 id<br>*string*|Consumer ID
 secret<br>*string*|Consumer API secret
 
@@ -417,7 +417,7 @@ Get the funds that belong to a consumer
 ### Parameters
 
 Parameter|In|Description
----|---|---|---|---|
+---|---|---|
 id<br>*required*|path|Consumer Id
 before|query|A cursor; retrieves the previous rows before this ID
 after|query|A cursor; retrieves the next rows after this ID
@@ -458,12 +458,12 @@ limit|query|The maximum number of results in the result set (limit 100, default 
 ### Response
 
 This is a [paginated collection](#pagination).
-Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` array.
+Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` object.
 
 Dotted properties (eg. counts.comments) are subproperties.
 
 Parameter|Description
----|---|---|---|---|
+---|---|
 id<br>*string*|Fund ID
 email<br>*string*|Email
 name<br>*string*|Full name
@@ -533,7 +533,7 @@ Creates a new GoFundMe fund
 Dotted properties (eg. user.email) are subproperties.
 
 Parameter|In|Description
----|---|---|---|---|
+---|---|---|
 user.email<br>*required*|body|User's email
 user.name<br>*required*|body|User's name
 category<br>*required*|body|Category name
@@ -575,7 +575,7 @@ media|body|Main image or video
 Dotted properties (eg. counts.comments) are subproperties.
 
 Parameter|Description
----|---|---|---|---|
+---|---|
 id<br>*string*|Fund ID
 email<br>*string*|Email
 name<br>*string*|Full name
@@ -619,7 +619,7 @@ Launch a newly created GoFundMe fund and send user claim email
 ### Parameters
 
 Parameter|In|Description
----|---|---|---|---|
+---|---|---|
 id<br>*required*|path|Fund Id
 
 <aside class="success">
@@ -1024,7 +1024,7 @@ limit|query|The maximum number of results in the result set (limit 100, default 
 ### Response
 
 This is a [paginated collection](#pagination).
-Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` array.
+Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` object.
 
 Parameter|Description
 ---|---|---|---|---|
@@ -1085,7 +1085,7 @@ limit|query|The maximum number of results in the result set (limit 100, default 
 ### Response
 
 This is a [paginated collection](#pagination).
-Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` array.
+Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` object.
 
 Parameter|Description
 ---|---|---|---|---|
@@ -1148,7 +1148,7 @@ limit|query|The maximum number of results in the result set (limit 100, default 
 ### Response
 
 This is a [paginated collection](#pagination).
-Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` array.
+Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` object.
 
 Parameter|Description
 ---|---|---|---|---|
