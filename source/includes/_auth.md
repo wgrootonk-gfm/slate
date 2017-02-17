@@ -1,15 +1,39 @@
 # Authentication with JWT
 We utilize JSON Web Tokens ([JWT](https://jwt.io/)) to authenticate and verify payloads sent between our partners and our REST API. Every API consumer will have a **Consumer Id** and an associated **API Key**.
 
-## Authorization Header
-The partner API will expect the **Authorization** header to be present when accepting JSON web tokens. 
-> Auth Header
+## HTTP Headers
+The partner API will expect the ***Authorization*** header to be present when accepting JSON web tokens. The header should contain Bearer and a generated token.
 
+> Code Samples
+
+````shell
+# Pass auth header on each request
+curl -X get http://api.gofundme.com/partner -H "Authorization: Bearer <token>"
 ````
+
+````http
+GET http://api.gofundme.com/partner HTTP/1.1
+Host: api.gofundme.com
+Content-Type: application/json
+Accept: application/json
 Authorization: Bearer <token>
 ````
-As is standard with JWT our token can be broken into three parts. First we have the **header** which contains the algorithm and token type
-> Header JSON
+
+### Recommended Headers
+
+Header|Value
+---|---|
+*Authorization*|`Bearer <token>`|
+*Content-Type*|`application/json`|
+
+## JSON Web Token
+As is standard with JWT our token can be broken into three parts. Conceptually this token is made up of the header, payload and signature each of which is separated by a period.
+
+`
+<header>.<payload>.<signature>
+`
+
+> JWT Header JSON
 
 ````json
 {
@@ -17,16 +41,37 @@ As is standard with JWT our token can be broken into three parts. First we have 
   "typ": "JWT"
 }
 ````
-Second is the request **payload** which contains your **consumer Id** as the *sub* claim.
-> Payload JSON
+
+### JWT Header
+
+First we have the **header** which contains the algorithm and token type.
+
+Property|Required|Description|Supported Values
+---|---|---|---|
+*alg*|true|Hashing algorithm used on signature|`HS256`
+*typ*|true|Type of token used|`JWT`
+
+<aside class="notice">
+JWT signatures currently only support HS256 
+</aside>
+
+> JWT Payload JSON
 
 ````json
 {
   "sub": "y42LW46J9luq3Xq9XMly"
 }
 ````
-The final portion of your token will contain the request **signature**.
-> Signature creation
+
+### JWT Payload
+
+Second is the request **payload** which contains any *claims* being made about each request.
+
+Property|Required|Description
+---|---|---|---|
+*sub*|true|Contains the Consumer Id provided by issued through our Consumers API
+
+> JWT Signature Creation
 
 ````
 HMACSHA256(
@@ -35,15 +80,8 @@ HMACSHA256(
   secret
 )
 ````
-Conceptually our token will contain each of the above parts separated by a period. 
-> JWT Structure
 
-````
-<header>.<payloads>.<signature>
-````
-Finally each part in it's true form.
-> JWT Token Example
+### JWT Signature
 
-````
-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ5NDJMVzQ2SjlsdXEzWHE5WE1seSJ9.-iIOYeBAaRcnHBayv21eSBqo2ug-W0C0bgrP_6wkl88
-````
+The final portion of your token is the **signature**. The signature uses *HMAC SHA256* to generate a keyed hash value. The data that is fed into the hashing algorithm is made up of the header and payload which are both individually *base 64 encoded and URL safe*. These two pieces are then appended together and hashed using the secret key issued to your consumer.
+
