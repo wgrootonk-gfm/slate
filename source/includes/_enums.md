@@ -29,10 +29,19 @@ Value|Description
 `WEDDINGS`|Weddings & Honeymoons|
 
 ## Fund Status
-Fund resources can expect to have a simple return property called `status`. Generally this field returns a value that represents whether a fund is discoverable or not.
+Fund resources can expect to have a simple return property called `status`. Generally this field returns a value that represents whether a fund is visible to the public or not.
 
 Value|Description
 ---|---|
-`ACTIVE`| Resource is discoverable
-`PENDING`| Resource is pending completion and is not discoverable  
-`INACTIVE`| Resource is being reviewed or is simply not discoverable
+`ACTIVE`| Fund is discoverable
+`PENDING`| Fund is pending claim completion and is not discoverable  
+`INACTIVE`| Fund is not discoverable
+
+## User Status
+The User sub resource, similar to it's parent Fund, has a `status` field. 
+
+Value|Description
+---|---|
+`ACTIVE`| User is active
+`PENDING`| User is pending claim completion
+`INACTIVE`| User is inactive

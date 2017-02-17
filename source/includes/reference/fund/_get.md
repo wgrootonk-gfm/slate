@@ -60,7 +60,7 @@ id<br>*string*|Fund ID
 email<br>*string*|Email
 name<br>*string*|Full name
 description<br>*string*|Description
-category<br>*string*|Category
+category<br>*string, ENUM*|[Fund Category](#fund-categorization), How a fund is discovered 
 currency_code<br>*string*|User's currency code ISO 4217 alpha-3
 goal<br>*integer*|Goal amount in user's currency
 media<br>*string*|Main image or video
@@ -70,5 +70,5 @@ counts.donations<br>*integer*|How many donations the campaign has
 counts.updates<br>*integer*|How many updates the campaign has
 comments_enabled<br>*boolean*|Whether comments are enabled or not
 donations_enabled<br>*boolean*|Whether the fund is accepting donations or not
-status<br>*string, ACTIVE or INACTIVE*|Fund status, visibility to the public
+status<br>*string, ENUM*|[Fund Status](#fund-status), visibility to the public
 created_at<br>*timestamp*|When the fund was created
