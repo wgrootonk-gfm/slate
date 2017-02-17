@@ -457,6 +457,9 @@ limit|query|The maximum number of results in the result set (limit 100, default 
 
 ### Response
 
+This is a [paginated collection](#pagination).
+Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` array.
+
 Dotted properties (eg. counts.comments) are subproperties.
 
 Parameter|Description
@@ -973,15 +976,16 @@ This operation does not require authentication
 > Code samples
 
 ````shell
-# You can also use wget
-curl -X get http://api.gofundme.com/partner/v1/funds/{id}/comments
+curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/comments \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
 ````
 
 ````http
-GET http://api.gofundme.com/partner/v1/funds/{id}/comments HTTP/1.1
+GET http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/comments HTTP/1.1
 Host: api.gofundme.com
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ````
 
 `GET /funds/{id}/comments`
@@ -992,36 +996,23 @@ Get comments for a given fund
 
 ### Parameters
 
-Parameter|In|Type|Required|Description
+Parameter|In|Description
 ---|---|---|---|---|
-id|path|string|true|Fund Id
-before|query|string|false|A cursor; retrieves the previous rows before this ID
-after|query|string|false|A cursor; retrieves the next rows after this ID
-limit|query|integer|false|The maximum number of results in the result set (limit 100, default 20)
+id<br>*required*|path|Fund Id
+before|query|A cursor; retrieves the previous rows before this ID
+after|query|A cursor; retrieves the next rows after this ID
+limit|query|The maximum number of results in the result set (limit 100, default 20)
 
-
-
-### Responses
-
-Status|Meaning|Description
----|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
-
-> Example responses
+> Example response
 
 ````json
 {
   "data": [
     {
-      "id": "string",
-      "name": "string",
-      "text": "string",
-      "created_at": "string"
+      "id": "gVKZC7RFtJ",
+      "name": "John Jin",
+      "text": "Hello!",
+      "created_at": "2017-02-17T00:12:16Z"
     }
   ],
   "meta": {
@@ -1029,79 +1020,34 @@ Status|Meaning|Description
   }
 }
 ````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-<aside class="success">
-This operation does not require authentication
-</aside>
+
+### Response
+
+This is a [paginated collection](#pagination).
+Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` array.
+
+Parameter|Description
+---|---|---|---|---|
+id<br>*string*|Comment ID
+name<br>*string*|Commenter name
+text<br>*string*|Comment text
+created_at<br>*timestamp*|When the comment was created
 
 ## fund.get.updates
 
 > Code samples
 
 ````shell
-# You can also use wget
-curl -X get http://api.gofundme.com/partner/v1/funds/{id}/updates
+curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/updates \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
 ````
 
 ````http
-GET http://api.gofundme.com/partner/v1/funds/{id}/updates HTTP/1.1
+GET http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/updates HTTP/1.1
 Host: api.gofundme.com
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ````
 
 `GET /funds/{id}/updates`
@@ -1112,35 +1058,22 @@ Get updates for a given fund
 
 ### Parameters
 
-Parameter|In|Type|Required|Description
+Parameter|In|Description
 ---|---|---|---|---|
-id|path|string|true|Fund Id
-before|query|string|false|A cursor; retrieves the previous rows before this ID
-after|query|string|false|A cursor; retrieves the next rows after this ID
-limit|query|integer|false|The maximum number of results in the result set (limit 100, default 20)
+id<br>*required*|path|Fund Id
+before|query|A cursor; retrieves the previous rows before this ID
+after|query|A cursor; retrieves the next rows after this ID
+limit|query|The maximum number of results in the result set (limit 100, default 20)
 
-
-
-### Responses
-
-Status|Meaning|Description
----|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
-
-> Example responses
+> Example response
 
 ````json
 {
   "data": [
     {
-      "id": "string",
-      "text": "string",
-      "created_at": "string"
+      "id": "SGoXQkhfl",
+      "text": "Hello!",
+      "created_at": "2017-02-17T00:12:16Z"
     }
   ],
   "meta": {
@@ -1148,79 +1081,34 @@ Status|Meaning|Description
   }
 }
 ````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-<aside class="success">
-This operation does not require authentication
-</aside>
+
+### Response
+
+This is a [paginated collection](#pagination).
+Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` array.
+
+Parameter|Description
+---|---|---|---|---|
+id<br>*string*|Update ID
+text<br>*string*|Update text (HTML)
+created_at<br>*timestamp*|When the update was created
+
 
 ## fund.get.donations
 
 > Code samples
 
 ````shell
-# You can also use wget
-curl -X get http://api.gofundme.com/partner/v1/funds/{id}/donations
+curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/donations \
+-H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
 ````
 
 ````http
-GET http://api.gofundme.com/partner/v1/funds/{id}/donations HTTP/1.1
+GET http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/donations HTTP/1.1
 Host: api.gofundme.com
 Content-Type: application/json
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ
 ````
 
 `GET /funds/{id}/donations`
@@ -1231,37 +1119,24 @@ Get donations for a given fund
 
 ### Parameters
 
-Parameter|In|Type|Required|Description
+Parameter|In|Description
 ---|---|---|---|---|
-id|path|string|true|Fund Id
-before|query|string|false|A cursor; retrieves the previous rows before this ID
-after|query|string|false|A cursor; retrieves the next rows after this ID
-limit|query|integer|false|The maximum number of results in the result set (limit 100, default 20)
+id<br>*required*|path|Fund Id
+before|query|A cursor; retrieves the previous rows before this ID
+after|query|A cursor; retrieves the next rows after this ID
+limit|query|The maximum number of results in the result set (limit 100, default 20)
 
-
-
-### Responses
-
-Status|Meaning|Description
----|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Successful Operation
-400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
-401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
-403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
-429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
-500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
-
-> Example responses
+> Example response
 
 ````json
 {
   "data": [
     {
-      "id": "string",
-      "amount": "string",
-      "name": "string",
-      "text": "string",
-      "created_at": "string"
+      "id": "3bHUuvLML",
+      "amount": 50,
+      "name": "John Jin",
+      "text": "Get well soon!",
+      "created_at": "2017-02-17T00:12:16Z"
     }
   ],
   "meta": {
@@ -1269,62 +1144,16 @@ Status|Meaning|Description
   }
 }
 ````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-````json
-{
-  "error": {
-    "domain": "string",
-    "code": "string",
-    "short_description": "string",
-    "message": "string",
-    "data": {}
-  }
-}
-````
-<aside class="success">
-This operation does not require authentication
-</aside>
 
+### Response
+
+This is a [paginated collection](#pagination).
+Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` array.
+
+Parameter|Description
+---|---|---|---|---|
+id<br>*string*|Donation ID
+amount<br>*integer*|Donation amount in the fund's currency
+name<br>*string*|Name of the person who donated
+text<br>*string*|Donation comment text
+created_at<br>*timestamp*|When the donation was made

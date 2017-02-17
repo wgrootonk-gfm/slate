@@ -9,6 +9,7 @@ includes:
   - intro
   - auth
   - errors
+  - pagination
   - ref
 search: true
 ---
