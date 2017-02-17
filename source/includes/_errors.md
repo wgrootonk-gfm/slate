@@ -19,6 +19,8 @@ Status|Meaning|Description
 400|[Bad Request](https://tools.ietf.org/html/rfc7231#section-6.5.1)|Bad Request
 401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized
 403|[Forbidden](https://tools.ietf.org/html/rfc7231#section-6.5.3)|Forbidden
+404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found
+405|[Method Not Allowed](https://tools.ietf.org/html/rfc7231#section-6.5.5)|Method Not Allowed
 429|[Too Many Requests](https://tools.ietf.org/html/rfc6585#section-4)|Too Many Requests
 500|[Internal Server Error](https://tools.ietf.org/html/rfc7231#section-6.6.1)|Internal Server Error
 
@@ -30,7 +32,7 @@ The system will attempt to gracefully catch the details of the error and the con
 
 ````json
 {  
-   "error":{  
+   "error": {  
       "domain":"string",
       "code":"int",
       "short_description":"string",
@@ -43,13 +45,13 @@ The system will attempt to gracefully catch the details of the error and the con
 ````
 So let's break down this response:
 
-Property|Type|Required|Description
----|---|---|---|
-***domain***|string|true|The service in which returned the error (Partner)
-***code***|integer|true|Numeric value representing a specific error
-***short_description***|string|true|Short informative description 
-***message***|string|false|Provides a human readable string
-***data***|object|false|Data specific to the action taken
+Property|Description
+---|---|
+domain<br>*string*|The service in which returned the error (Partner)
+code<br>*integer*|Numeric value representing a specific error
+short_description<br>*string*|Short informative description 
+message<br>*string*|Provides a human readable string
+data<br>*object*|Data specific to the action taken
 
 > Example JWT Authentication Failure
 
