@@ -450,6 +450,16 @@ JWT signatures currently only support HS256
 <td>Forbidden</td>
 </tr>
 <tr>
+<td>404</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
+<td>Not Found</td>
+</tr>
+<tr>
+<td>405</td>
+<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.5">Method Not Allowed</a></td>
+<td>Method Not Allowed</td>
+</tr>
+<tr>
 <td>429</td>
 <td><a href="https://tools.ietf.org/html/rfc6585#section-4">Too Many Requests</a></td>
 <td>Too Many Requests</td>
@@ -469,7 +479,7 @@ JWT signatures currently only support HS256
 <p>Error Response Format</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">  
-   </span><span class="nt">"error"</span><span class="p">:{</span><span class="w">  
+   </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">  
       </span><span class="nt">"domain"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"code"</span><span class="p">:</span><span class="s2">"int"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"short_description"</span><span class="p">:</span><span class="s2">"string"</span><span class="p">,</span><span class="w">
@@ -485,39 +495,27 @@ JWT signatures currently only support HS256
 <table><thead>
 <tr>
 <th>Property</th>
-<th>Type</th>
-<th>Required</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><strong><em>domain</em></strong></td>
-<td>string</td>
-<td>true</td>
+<td>domain<br><em>string</em></td>
 <td>The service in which returned the error (Partner)</td>
 </tr>
 <tr>
-<td><strong><em>code</em></strong></td>
-<td>integer</td>
-<td>true</td>
+<td>code<br><em>integer</em></td>
 <td>Numeric value representing a specific error</td>
 </tr>
 <tr>
-<td><strong><em>short_description</em></strong></td>
-<td>string</td>
-<td>true</td>
+<td>short_description<br><em>string</em></td>
 <td>Short informative description</td>
 </tr>
 <tr>
-<td><strong><em>message</em></strong></td>
-<td>string</td>
-<td>false</td>
+<td>message<br><em>string</em></td>
 <td>Provides a human readable string</td>
 </tr>
 <tr>
-<td><strong><em>data</em></strong></td>
-<td>object</td>
-<td>false</td>
+<td>data<br><em>object</em></td>
 <td>Data specific to the action taken</td>
 </tr>
 </tbody></table>
@@ -667,6 +665,188 @@ If both `before` and `after` are passed in, only `before` will be used.
 <td>Whether there are more results to be retrieved or not</td>
 </tr>
 </tbody></table>
+
+          <h1 id="enumerations">Enumerations</h1>
+
+<p>The Partner API uses enumerations to describe specific resource actions and/or states.</p>
+
+<h2 id="fund-categorization">Fund Categorization</h2>
+
+<p>Our Fund resources will either expect or return, as part of a response, a <code class="prettyprint">category</code> property. This property is important for determining how a fund is discovered.</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">EMERGENCIES</code></td>
+<td>Accidents &amp; Emergencies</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PETS</code></td>
+<td>Animals &amp; Pets</td>
+</tr>
+<tr>
+<td><code class="prettyprint">FAMILY</code></td>
+<td>Babies, Kids &amp; Family</td>
+</tr>
+<tr>
+<td><code class="prettyprint">BUSINESS</code></td>
+<td>Business &amp; Entrepreneurs</td>
+</tr>
+<tr>
+<td><code class="prettyprint">EVENTS</code></td>
+<td>Celebrations &amp; Events</td>
+</tr>
+<tr>
+<td><code class="prettyprint">COMMUNITY</code></td>
+<td>Community &amp; Neighbors</td>
+</tr>
+<tr>
+<td><code class="prettyprint">COMPETITIONS</code></td>
+<td>Competitions &amp; Pageants</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CREATIVE</code></td>
+<td>Creative Arts, Music &amp; Film</td>
+</tr>
+<tr>
+<td><code class="prettyprint">DREAMS</code></td>
+<td>Dreams, Hopes &amp; Wishes</td>
+</tr>
+<tr>
+<td><code class="prettyprint">EDUCATION</code></td>
+<td>Education &amp; Learning</td>
+</tr>
+<tr>
+<td><code class="prettyprint">FUNERALS</code></td>
+<td>Funerals &amp; Memorials</td>
+</tr>
+<tr>
+<td><code class="prettyprint">MEDICAL</code></td>
+<td>Medical, Illness &amp; Healing</td>
+</tr>
+<tr>
+<td><code class="prettyprint">RELIGION</code></td>
+<td>Missions, Faith &amp; Church</td>
+</tr>
+<tr>
+<td><code class="prettyprint">CHARITY</code></td>
+<td>Non-Profits &amp; Charities</td>
+</tr>
+<tr>
+<td><code class="prettyprint">OTHER</code></td>
+<td>Other</td>
+</tr>
+<tr>
+<td><code class="prettyprint">SPORTS</code></td>
+<td>Sports, Teams &amp; Clubs</td>
+</tr>
+<tr>
+<td><code class="prettyprint">TRAVEL</code></td>
+<td>Travel &amp; Adventure</td>
+</tr>
+<tr>
+<td><code class="prettyprint">VOLUNTEER</code></td>
+<td>Volunteer &amp; Service</td>
+</tr>
+<tr>
+<td><code class="prettyprint">WEDDINGS</code></td>
+<td>Weddings &amp; Honeymoons</td>
+</tr>
+</tbody></table>
+
+<h2 id="fund-status">Fund Status</h2>
+
+<p>Fund resources can expect to have a simple return property called <code class="prettyprint">status</code>. Generally this field returns a value that represents whether a fund is visible to the public or not.</p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">ACTIVE</code></td>
+<td>Fund is discoverable</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PENDING</code></td>
+<td>Fund is pending claim completion and is not discoverable</td>
+</tr>
+<tr>
+<td><code class="prettyprint">INACTIVE</code></td>
+<td>Fund is not discoverable</td>
+</tr>
+</tbody></table>
+
+<h2 id="user-status">User Status</h2>
+
+<p>The User sub resource, similar to it&rsquo;s parent Fund, has a <code class="prettyprint">status</code> field. </p>
+
+<table><thead>
+<tr>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">ACTIVE</code></td>
+<td>User is active</td>
+</tr>
+<tr>
+<td><code class="prettyprint">PENDING</code></td>
+<td>User is pending claim completion</td>
+</tr>
+<tr>
+<td><code class="prettyprint">INACTIVE</code></td>
+<td>User is inactive</td>
+</tr>
+</tbody></table>
+
+          <h1 id="versioning">Versioning</h1>
+
+<p>The Partner API is versioned, so developers can expect the API behavior they see to remain constant
+(e.g. properties seen in responses, parameters sent in requests, etc.). When we change the API in a 
+backwards-incompatible way, we release a new version. Old API versions will be disabled after their 
+end of life date.</p>
+
+<p>When sending queries to the API, versions are placed after the <code class="prettyprint">https://api.gofundme.com/partner/</code> base URL.</p>
+
+<h2 id="api-versions">API versions</h2>
+
+<table><thead>
+<tr>
+<th>Version</th>
+<th>Description</th>
+<th>Release date</th>
+<th>End of life</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>v1</td>
+<td>Initial release</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h2 id="backward-compatibility-charter">Backward compatibility charter</h2>
+
+<p>For a given API version, we promise to only make backwards-compatible changes.</p>
+
+<p>The following are considered backwards-compatible:</p>
+
+<ul>
+<li>Adding new API resources.</li>
+<li>Adding new optional request parameters to existing API methods.</li>
+<li>Adding new properties to existing API responses.</li>
+<li>Changing the order of properties in existing API responses.</li>
+<li>Changing the length or format of object IDs or other opaque strings. 
+You can safely assume object IDs we generate will never exceed 255 characters.</li>
+</ul>
 
           <h1 id="beneficiary">Beneficiary</h1>
 
@@ -1135,8 +1315,7 @@ If both `before` and `after` are passed in, only `before` will be used.
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="c"># You can also use wget</span>
-curl -X put https://api.gofundme.com/partner/v1/consumers/FUe9zttHXkaOag <span class="se">\ </span>
+<pre class="highlight shell"><code>curl -X put https://api.gofundme.com/partner/v1/consumers/FUe9zttHXkaOag <span class="se">\ </span>
 -H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
 </code></pre><pre class="highlight http"><code><span class="nf">PUT</span> <span class="nn">https://api.gofundme.com/partner/v1/consumers/FUe9zttHXkaOag</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
@@ -1154,7 +1333,6 @@ curl -X put https://api.gofundme.com/partner/v1/consumers/FUe9zttHXkaOag <span c
 <p>Body parameter</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FUe9zttHXkaOag"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"funeralhome@example.org"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Funeral Home"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"A funeral home for all your funeral needs"</span><span class="p">,</span><span class="w">
@@ -1186,7 +1364,7 @@ curl -X put https://api.gofundme.com/partner/v1/consumers/FUe9zttHXkaOag <span c
 </thead><tbody>
 <tr>
 <td>id<br><em>required</em></td>
-<td>body</td>
+<td>path</td>
 <td>Consumer ID</td>
 </tr>
 <tr>
@@ -1284,13 +1462,6 @@ This operation does not return a response body.
 
 <p>Reissue a GoFundMe consumer secret</p>
 
-<blockquote>
-<p>Body parameter</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"FUe9zttHXkaOag"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
 <h3 id="parameters">Parameters</h3>
 
 <table><thead>
@@ -1302,7 +1473,7 @@ This operation does not return a response body.
 </thead><tbody>
 <tr>
 <td>id<br><em>required</em></td>
-<td>body</td>
+<td>path</td>
 <td>Consumer ID</td>
 </tr>
 </tbody></table>
@@ -1502,8 +1673,7 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="c"># You can also use wget</span>
-curl -X post https://api.gofundme.com/partner/v1/funds <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X post https://api.gofundme.com/partner/v1/funds <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
 </code></pre><pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">https://api.gofundme.com/partner/v1/funds</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
@@ -1608,18 +1778,19 @@ curl -X post https://api.gofundme.com/partner/v1/funds <span class="se">\</span>
   </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is an example fund"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"category"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEMORIALS"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"currency_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"goal"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"media"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://example.org/test.jpg"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
   </span><span class="nt">"counts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"donations"</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"updates"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="w">
+    </span><span class="nt">"comments"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"donations"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"updates"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"comments_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"donations_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"launched_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="response">Response</h3>
@@ -1649,8 +1820,8 @@ curl -X post https://api.gofundme.com/partner/v1/funds <span class="se">\</span>
 <td>Description</td>
 </tr>
 <tr>
-<td>category<br><em>string</em></td>
-<td>Category</td>
+<td>category<br><em>string, ENUM</em></td>
+<td><a href="#fund-categorization">Fund Category</a>, How a fund is discovered</td>
 </tr>
 <tr>
 <td>currency_code<br><em>string</em></td>
@@ -1689,8 +1860,8 @@ curl -X post https://api.gofundme.com/partner/v1/funds <span class="se">\</span>
 <td>Whether the fund is accepting donations or not</td>
 </tr>
 <tr>
-<td>status<br><em>string, ACTIVE or INACTIVE</em></td>
-<td>Fund status, visibility to the public</td>
+<td>status<br><em>string, ENUM</em></td>
+<td><a href="#fund-status">Fund Status</a>, visibility to the public</td>
 </tr>
 <tr>
 <td>created_at<br><em>timestamp</em></td>
@@ -1703,9 +1874,9 @@ curl -X post https://api.gofundme.com/partner/v1/funds <span class="se">\</span>
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X post http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/launch <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X post https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/launch <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
-</code></pre><pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/launch</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http"><code><span class="nf">POST</span> <span class="nn">https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/launch</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1742,9 +1913,9 @@ This operation does not return a response body.
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X get https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
-</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1821,8 +1992,8 @@ This operation does not return a response body.
 <td>Description</td>
 </tr>
 <tr>
-<td>category<br><em>string</em></td>
-<td>Category</td>
+<td>category<br><em>string, ENUM</em></td>
+<td><a href="#fund-categorization">Fund Category</a>, How a fund is discovered</td>
 </tr>
 <tr>
 <td>currency_code<br><em>string</em></td>
@@ -1861,8 +2032,8 @@ This operation does not return a response body.
 <td>Whether the fund is accepting donations or not</td>
 </tr>
 <tr>
-<td>status<br><em>string, ACTIVE or INACTIVE</em></td>
-<td>Fund status, visibility to the public</td>
+<td>status<br><em>string, ENUM</em></td>
+<td><a href="#fund-status">Fund Status</a>, visibility to the public</td>
 </tr>
 <tr>
 <td>created_at<br><em>timestamp</em></td>
@@ -1875,10 +2046,9 @@ This operation does not return a response body.
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="c"># You can also use wget</span>
-curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/user <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X get https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/user <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
-</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/user</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/user</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
@@ -1945,8 +2115,8 @@ curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/user <span cla
 <td>User can create new funds</td>
 </tr>
 <tr>
-<td>status<br><em>string, ACTIVE or INACTIVE</em></td>
-<td>User status, visibility to the public</td>
+<td>status<br><em>string, ENUM</em></td>
+<td><a href="#user-status">User Status</a>, active or not</td>
 </tr>
 <tr>
 <td>created_at<br><em>timestamp</em></td>
@@ -1959,10 +2129,9 @@ curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/user <span cla
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell"><code><span class="c"># You can also use wget</span>
-curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/beneficiary <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X get https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/beneficiary <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
-</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/beneficiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/beneficiary</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
@@ -2038,9 +2207,9 @@ curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/beneficiary <s
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/comments <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X get https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/comments <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
-</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/comments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/comments</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
@@ -2134,9 +2303,9 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/donations <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X get https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/donations <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
-</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/donations</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/donations</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
@@ -2235,9 +2404,9 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
 <blockquote>
 <p>Code samples</p>
 </blockquote>
-<pre class="highlight shell"><code>curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/updates <span class="se">\</span>
+<pre class="highlight shell"><code>curl -X get https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/updates <span class="se">\</span>
 -H <span class="s2">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"</span>
-</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/updates</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre><pre class="highlight http"><code><span class="nf">GET</span> <span class="nn">https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/updates</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Host</span><span class="p">:</span> <span class="s">api.gofundme.com</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/json</span>
