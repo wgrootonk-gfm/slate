@@ -1,9 +1,11 @@
 # Versioning
 
-The partner API is versioned, so developers can expect the API behavior they see to remain constant
+The Partner API is versioned, so developers can expect the API behavior they see to remain constant
 (e.g. properties seen in responses, parameters sent in requests, etc.). When we change the API in a 
 backwards-incompatible way, we release a new version. Old API versions will be disabled after their 
 end of life date.
+
+When sending queries to the API, versions are placed after the `https://api.gofundme.com/partner/` base URL.
 
 ## API versions
 

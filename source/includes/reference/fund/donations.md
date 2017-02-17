@@ -3,12 +3,12 @@
 > Code samples
 
 ````shell
-curl -X get http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/donations \
+curl -X get https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/donations \
 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
 ````
 
 ````http
-GET http://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/donations HTTP/1.1
+GET https://api.gofundme.com/partner/v1/funds/Q2aWYAXtQK8A/donations HTTP/1.1
 Host: api.gofundme.com
 Content-Type: application/json
 Accept: application/json

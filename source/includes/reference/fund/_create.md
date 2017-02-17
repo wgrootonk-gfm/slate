@@ -3,7 +3,6 @@
 > Code samples
 
 ````shell
-# You can also use wget
 curl -X post https://api.gofundme.com/partner/v1/funds \
 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
 ````
