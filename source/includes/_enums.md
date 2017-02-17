@@ -1,6 +1,6 @@
 # Enumerations 
 
-The Partner API various enumerations that can be used to describe specific resource actions and/or states.
+The Partner API uses enumerations to describe specific resource actions and/or states.
 
 
 ## Fund Categorization
