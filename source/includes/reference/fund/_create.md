@@ -68,18 +68,19 @@ media|body|Main image or video
   "description": "This is an example fund",
   "category": "MEMORIALS",
   "currency_code": "USD",
-  "goal": 500,
+  "goal": 0,
   "media": "https://example.org/test.jpg",
-  "balance": 100,
+  "balance": 0,
   "counts": {
-    "comments": 2,
-    "donations": 22,
-    "updates": 1
+    "comments": 0,
+    "donations": 0,
+    "updates": 0
   },
   "comments_enabled": true,
   "donations_enabled": true,
   "status": "ACTIVE",
-  "created_at": "2017-02-17T00:12:16Z"
+  "created_at": "2017-02-17T00:12:16Z",
+  "launched_at": null
 }
 ````
 

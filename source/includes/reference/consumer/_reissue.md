@@ -21,19 +21,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3O
 
 Reissue a GoFundMe consumer secret
 
-> Body parameter
-
-````json
-{
-  "id": "FUe9zttHXkaOag"
-}
-````
-
 ### Parameters
 
 Parameter|In|Description
 ---|---|---|
-id<br>*required*|body|Consumer ID
+id<br>*required*|path|Consumer ID
 
 > Example response
 

@@ -26,7 +26,6 @@ Edits an existing GoFundMe consumer account
 
 ````json
 {
-  "id": "FUe9zttHXkaOag",
   "email": "funeralhome@example.org",
   "name": "Funeral Home",
   "description": "A funeral home for all your funeral needs",
@@ -52,7 +51,7 @@ Dotted properties (eg. address.city) are sub-properties.
 
 Parameter|In|Description
 ---|---|---|
-id<br>*required*|body|Consumer ID
+id<br>*required*|path|Consumer ID
 email|body|Email
 name|body|Full name
 description|body|Description
