@@ -7,7 +7,7 @@ The partner API only accepts request methods `GET`, `POST` and `PUT`. Generally 
 
 Status|Meaning|Description
 ---|---|---|
-200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Reserved for `GET` requests and JSON in body is expected.
+200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|Reserved for `GET` and `POST` requests and JSON in body is optional.
 201|[Created](https://tools.ietf.org/html/rfc7231#section-6.3.2)|Reserved for `POST` requests and JSON in body is optional.
 204|[No Content](https://tools.ietf.org/html/rfc7231#section-6.3.5)| Reserved for `PUT` requests and no body is expected.
 
