@@ -997,7 +997,7 @@ Get comments for a given fund
 ### Parameters
 
 Parameter|In|Description
----|---|---|---|---|
+---|---|---|
 id<br>*required*|path|Fund Id
 before|query|A cursor; retrieves the previous rows before this ID
 after|query|A cursor; retrieves the next rows after this ID
@@ -1027,7 +1027,7 @@ This is a [paginated collection](#pagination).
 Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` object.
 
 Parameter|Description
----|---|---|---|---|
+---|---|
 id<br>*string*|Comment ID
 name<br>*string*|Commenter name
 text<br>*string*|Comment text
@@ -1059,7 +1059,7 @@ Get updates for a given fund
 ### Parameters
 
 Parameter|In|Description
----|---|---|---|---|
+---|---|---|
 id<br>*required*|path|Fund Id
 before|query|A cursor; retrieves the previous rows before this ID
 after|query|A cursor; retrieves the next rows after this ID
@@ -1088,7 +1088,7 @@ This is a [paginated collection](#pagination).
 Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` object.
 
 Parameter|Description
----|---|---|---|---|
+---|---|
 id<br>*string*|Update ID
 text<br>*string*|Update text (HTML)
 created_at<br>*timestamp*|When the update was created
@@ -1120,7 +1120,7 @@ Get donations for a given fund
 ### Parameters
 
 Parameter|In|Description
----|---|---|---|---|
+---|---|---|
 id<br>*required*|path|Fund Id
 before|query|A cursor; retrieves the previous rows before this ID
 after|query|A cursor; retrieves the next rows after this ID
@@ -1151,7 +1151,7 @@ This is a [paginated collection](#pagination).
 Responses will be contained inside a `data` array, while metadata will be contained inside a `meta` object.
 
 Parameter|Description
----|---|---|---|---|
+---|---|
 id<br>*string*|Donation ID
 amount<br>*integer*|Donation amount in the fund's currency
 name<br>*string*|Name of the person who donated
