@@ -26,8 +26,8 @@ Creates a new GoFundMe beneficiary
 ````json
 {
   "fund_id": "rH29HDas09F",
-  "email": "jjin@example.org",
-  "name": "John Jin"
+  "email": "person@example.org",
+  "name": "Full Name"
 }
 ````
 
@@ -45,10 +45,10 @@ name<br>*required*|body|Full name
 {
   "id": "hDZS98daF",
   "fund_id": "rH29HDas09F",
-  "email": "jjin@example.com",
-  "name": "John Jin",
+  "email": "person@example.com",
+  "name": "Full Name",
   "invited_at": "2017-02-16T22:18:02Z",
-  "accepted_at": "null"
+  "accepted_at": null
 }
 ````
 

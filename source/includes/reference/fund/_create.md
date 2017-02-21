@@ -26,10 +26,10 @@ Creates a new GoFundMe fund
 ````json
 {
   "user": {
-    "email": "jjin@example.org",
-    "name": "John Jin"
+    "email": "person@example.org",
+    "name": "Full Name"
   },
-  "category": "MEMORIALS",
+  "category": "OTHER",
   "postal_code": "92123",
   "country_code": "US",
   "currency_code": "USD",
@@ -65,10 +65,10 @@ media|body|Main image or video
   "url": "example-fund",
   "title": "Example Fund",
   "description": "This is an example fund",
-  "category": "MEMORIALS",
+  "category": "OTHER",
   "currency_code": "USD",
   "goal": 0,
-  "media": "https://example.org/test.jpg",
+  "media": "https://place.example.org/media.png",
   "balance": 0,
   "counts": {
     "comments": 0,

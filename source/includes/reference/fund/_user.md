@@ -32,8 +32,8 @@ id<br>*required*|path|Fund Id
 ````json
 {
   "id": "Q2aWYAXtQK8A",
-  "email": "jjin@example.org",
-  "name": "John Jin",
+  "email": "person@example.org",
+  "name": "Full Name",
   "fund_creation_enabled": true,
   "status": "ACTIVE",
   "created_at": "2017-02-17T00:12:16Z"

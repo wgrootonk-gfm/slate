@@ -40,10 +40,10 @@ limit|query|The maximum number of results in the result set (limit 100, default 
       "url": "example-fund",
       "title": "Example Fund",
       "description": "This is an example fund",
-      "category": "MEMORIALS",
+      "category": "OTHER",
       "currency_code": "USD",
       "goal": 500,
-      "media": "https://example.org/test.jpg",
+      "media": "https://place.example.org/media.png",
       "balance": 100,
       "counts": {
         "comments": 2,

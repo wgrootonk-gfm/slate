@@ -37,7 +37,7 @@ limit|query|The maximum number of results in the result set (limit 100, default 
   "data": [
     {
       "id": "gVKZC7RFtJ",
-      "name": "John Jin",
+      "name": "Full Name",
       "text": "Hello!",
       "created_at": "2017-02-17T00:12:16Z"
     }

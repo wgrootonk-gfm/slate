@@ -38,7 +38,7 @@ limit|query|The maximum number of results in the result set (limit 100, default 
     {
       "id": "3bHUuvLML",
       "amount": 50,
-      "name": "John Jin",
+      "name": "Full Name",
       "text": "Get well soon!",
       "created_at": "2017-02-17T00:12:16Z"
     }

@@ -33,12 +33,12 @@ id<br>*required*|path|Consumer Id
 ````json
 {
   "id": "FUe9zttHXkaOag",
-  "email": "funeralhome@example.org",
-  "name": "Funeral Home",
-  "description": "A funeral home for all your funeral needs",
-  "url": "http://funeralhome.example.org/",
-  "logo_small": "https://funeralhome.example.org/logo_small.png",
-  "logo_big": "https://funeralhome.example.org/logo_big.png",
+  "email": "person@example.org",
+  "name": "Place Name",
+  "description": "A place for all your needs",
+  "url": "http://place.example.org/",
+  "logo_small": "https://place.example.org/logo_small.png",
+  "logo_big": "https://place.example.org/logo_big.png",
   "tax_id": "123456",
   "phone": "14085551234",
   "address": {
