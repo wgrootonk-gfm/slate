@@ -21,6 +21,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3O
 
 Edits an existing GoFundMe consumer account
 
+<aside class="notice">
+This is a parent consumer-only endpoint. Please reference the <a href="#roles">roles documentation</a> for more information.
+</aside>
+
 > Body parameter
 
 ````json
