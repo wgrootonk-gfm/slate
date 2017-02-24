@@ -50,5 +50,5 @@ id<br>*string*|User Id
 email<br>*string*|User's email
 name<br>*string*|User's name
 fund_creation_enabled<br>*boolean*|User can create new funds
-status<br>*string, ENUM*|[User Status](#user-status), active or not
+state<br>*string, ENUM*|[User Status](#user-status), active or not
 created_at<br>*timestamp*|When the user was created

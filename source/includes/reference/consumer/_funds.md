@@ -85,5 +85,5 @@ counts.donations<br>*integer*|How many donations the campaign has
 counts.updates<br>*integer*|How many updates the campaign has
 comments_enabled<br>*boolean*|Whether comments are enabled or not
 donations_enabled<br>*boolean*|Whether the fund is accepting donations or not
-status<br>*string, ACTIVE or INACTIVE*|Fund status, visibility to the public
+state<br>*string, ACTIVE or INACTIVE*|Fund status, visibility to the public
 created_at<br>*timestamp*|When the fund was created
