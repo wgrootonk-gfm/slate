@@ -46,7 +46,9 @@ id<br>*required*|path|Fund Id
   "comments_enabled": true,
   "donations_enabled": true,
   "state": "ACTIVE",
-  "created_at": "2017-02-17T00:12:16Z"
+  "created_at": "2017-02-17T00:12:16Z",
+  "claimed_at": "2017-02-24T00:02:03Z",
+  "launched_at": "2017-02-24T00:02:47Z"
 }
 ````
 
@@ -72,3 +74,5 @@ comments_enabled<br>*boolean*|Whether comments are enabled or not
 donations_enabled<br>*boolean*|Whether the fund is accepting donations or not
 state<br>*string, ENUM*|[Fund State](#fund-state), visibility to the public
 created_at<br>*timestamp*|When the fund was created
+claimed_at<br>*timestamp*|When the fund was claimed
+launched_at<br>*timestamp*|When the fund setup was completed
