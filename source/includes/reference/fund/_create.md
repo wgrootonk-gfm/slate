@@ -79,7 +79,7 @@ media|body|Main image or video
   "donations_enabled": true,
   "state": "ACTIVE",
   "created_at": "2017-02-17T00:12:16Z",
-  "claimed_at": null
+  "claimed_at": null,
   "launched_at": null
 }
 ````
