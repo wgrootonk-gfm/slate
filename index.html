@@ -1654,7 +1654,9 @@ This is a parent consumer-only endpoint. Please reference the <a href="#roles">r
       </span><span class="nt">"comments_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"donations_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="w">
+      </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-24T00:02:03Z"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"launched_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-24T00:02:47Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1738,6 +1740,14 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
 <tr>
 <td>created_at<br><em>timestamp</em></td>
 <td>When the fund was created</td>
+</tr>
+<tr>
+<td>claimed_at<br><em>timestamp</em></td>
+<td>When the fund was claimed</td>
+</tr>
+<tr>
+<td>launched_at<br><em>timestamp</em></td>
+<td>When the fund setup was completed</td>
 </tr>
 </tbody></table>
 
@@ -1867,7 +1877,8 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
   </span><span class="nt">"donations_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"launched_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="nt">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="s2">"launched_at"</span><span class="err">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="response">Response</h3>
@@ -1943,6 +1954,14 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
 <tr>
 <td>created_at<br><em>timestamp</em></td>
 <td>When the fund was created</td>
+</tr>
+<tr>
+<td>claimed_at<br><em>timestamp</em></td>
+<td>When the fund was claimed</td>
+</tr>
+<tr>
+<td>launched_at<br><em>timestamp</em></td>
+<td>When the fund setup was completed</td>
 </tr>
 </tbody></table>
 
@@ -2039,7 +2058,9 @@ This operation does not return a response body.
   </span><span class="nt">"comments_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"donations_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="w">
+  </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"claimed_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-24T00:02:03Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"launched_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-24T00:02:47Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <h3 id="response">Response</h3>
@@ -2115,6 +2136,14 @@ This operation does not return a response body.
 <tr>
 <td>created_at<br><em>timestamp</em></td>
 <td>When the fund was created</td>
+</tr>
+<tr>
+<td>claimed_at<br><em>timestamp</em></td>
+<td>When the fund was claimed</td>
+</tr>
+<tr>
+<td>launched_at<br><em>timestamp</em></td>
+<td>When the fund setup was completed</td>
 </tr>
 </tbody></table>
 
