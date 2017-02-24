@@ -819,9 +819,9 @@ If both <code>before</code> and <code>after</code> are passed in, only <code>bef
 </tr>
 </tbody></table>
 
-<h2 id="fund-status">Fund Status</h2>
+<h2 id="fund-state">Fund State</h2>
 
-<p>Fund resources can expect to have a simple return property called <code class="prettyprint">status</code>. Generally this field returns a value that represents whether a fund is visible to the public or not.</p>
+<p>Fund resources can expect to have a simple return property called <code class="prettyprint">state</code>. Generally this field returns a value that represents whether a fund is visible to the public or not.</p>
 
 <table><thead>
 <tr>
@@ -843,9 +843,9 @@ If both <code>before</code> and <code>after</code> are passed in, only <code>bef
 </tr>
 </tbody></table>
 
-<h2 id="user-status">User Status</h2>
+<h2 id="user-state">User State</h2>
 
-<p>The User sub resource, similar to it&rsquo;s parent Fund, has a <code class="prettyprint">status</code> field. </p>
+<p>The User sub resource, similar to it&rsquo;s parent Fund, has a <code class="prettyprint">state</code> field. </p>
 
 <table><thead>
 <tr>
@@ -1732,7 +1732,7 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
 <td>Whether the fund is accepting donations or not</td>
 </tr>
 <tr>
-<td>status<br><em>string, ACTIVE or INACTIVE</em></td>
+<td>state<br><em>string, ACTIVE or INACTIVE</em></td>
 <td>Fund status, visibility to the public</td>
 </tr>
 <tr>
@@ -1937,8 +1937,8 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
 <td>Whether the fund is accepting donations or not</td>
 </tr>
 <tr>
-<td>status<br><em>string, ENUM</em></td>
-<td><a href="#fund-status">Fund Status</a>, visibility to the public</td>
+<td>state<br><em>string, ENUM</em></td>
+<td><a href="#fund-state">Fund State</a>, visibility to the public</td>
 </tr>
 <tr>
 <td>created_at<br><em>timestamp</em></td>
@@ -2109,8 +2109,8 @@ This operation does not return a response body.
 <td>Whether the fund is accepting donations or not</td>
 </tr>
 <tr>
-<td>status<br><em>string, ENUM</em></td>
-<td><a href="#fund-status">Fund Status</a>, visibility to the public</td>
+<td>state<br><em>string, ENUM</em></td>
+<td><a href="#fund-state">Fund State</a>, visibility to the public</td>
 </tr>
 <tr>
 <td>created_at<br><em>timestamp</em></td>
@@ -2192,8 +2192,8 @@ This operation does not return a response body.
 <td>User can create new funds</td>
 </tr>
 <tr>
-<td>status<br><em>string, ENUM</em></td>
-<td><a href="#user-status">User Status</a>, active or not</td>
+<td>state<br><em>string, ENUM</em></td>
+<td><a href="#user-state">User State</a>, active or not</td>
 </tr>
 <tr>
 <td>created_at<br><em>timestamp</em></td>
