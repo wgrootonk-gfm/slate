@@ -28,8 +28,8 @@ Value|Description
 `VOLUNTEER`|Volunteer & Service|
 `WEDDINGS`|Weddings & Honeymoons|
 
-## Fund Status
-Fund resources can expect to have a simple return property called `status`. Generally this field returns a value that represents whether a fund is visible to the public or not.
+## Fund State
+Fund resources can expect to have a simple return property called `state`. Generally this field returns a value that represents whether a fund is visible to the public or not.
 
 Value|Description
 ---|---|
@@ -37,8 +37,8 @@ Value|Description
 `PENDING`| Fund is pending claim completion and is not discoverable  
 `INACTIVE`| Fund is not discoverable
 
-## User Status
-The User sub resource, similar to it's parent Fund, has a `status` field. 
+## User State
+The User sub resource, similar to it's parent Fund, has a `state` field. 
 
 Value|Description
 ---|---|
