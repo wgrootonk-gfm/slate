@@ -52,7 +52,7 @@ limit|query|The maximum number of results in the result set (limit 100, default 
       },
       "comments_enabled": true,
       "donations_enabled": true,
-      "status": "ACTIVE",
+      "state": "ACTIVE",
       "created_at": "2017-02-17T00:12:16Z"
     }
   ],

@@ -45,7 +45,7 @@ id<br>*required*|path|Fund Id
   },
   "comments_enabled": true,
   "donations_enabled": true,
-  "status": "ACTIVE",
+  "state": "ACTIVE",
   "created_at": "2017-02-17T00:12:16Z"
 }
 ````
