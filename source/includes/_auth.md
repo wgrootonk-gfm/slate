@@ -59,7 +59,6 @@ JWT signatures currently only support HS256
 
 ````json
 {
-  "aud": "consumer",
   "sub": "y42LW46J9luq3Xq9XMly"
 }
 ````
@@ -70,8 +69,7 @@ Second is the request **payload** which contains any *claims* being made about e
 
 Property|Required|Description
 ---|---|---|
-*aud*|true|Either "consumer" or "partner," depending on the access level a user has
-*sub*|true|Contains the Id provided by the Partner API
+*sub*|true|Contains the consumer id to access the Partner API
 
 > JWT Signature Creation
 

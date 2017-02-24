@@ -8,6 +8,7 @@ toc_footers:
 includes: 
   - intro
   - auth
+  - roles
   - errors
   - pagination
   - enums

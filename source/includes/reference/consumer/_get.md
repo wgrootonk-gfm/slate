@@ -21,6 +21,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3O
 
 Get a single GoFundMe consumer
 
+<aside class="notice">
+This is a parent consumer-only endpoint. Please reference the <a href="#roles">roles documentation</a> for more information.
+</aside>
+
 ### Parameters
 
 Parameter|Type|Description

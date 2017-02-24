@@ -28,7 +28,7 @@ after|query|A cursor; retrieves the next rows after this ID
 limit|query|The maximum number of results in the result set (limit 100, default 20)
 
 <aside class="notice">
-If both `before` and `after` are passed in, only `before` will be used.
+If both <code>before</code> and <code>after</code> are passed in, only <code>before</code> will be used.
 </aside>
 
 ## Response

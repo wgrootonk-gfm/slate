@@ -21,6 +21,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3O
 
 Reissue a GoFundMe consumer secret
 
+<aside class="notice">
+This is a parent consumer-only endpoint. Please reference the <a href="#roles">roles documentation</a> for more information.
+</aside>
+
 ### Parameters
 
 Parameter|In|Description
