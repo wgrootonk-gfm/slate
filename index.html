@@ -374,7 +374,7 @@ JWT signatures currently only support HS256
 <tr>
 <td><em>sub</em></td>
 <td>true</td>
-<td>Contains the Consumer Id provided by issued through our Consumers API</td>
+<td>Contains the consumer id to access the Partner API</td>
 </tr>
 </tbody></table>
 
@@ -390,6 +390,67 @@ JWT signatures currently only support HS256
 <h3 id="jwt-signature">JWT Signature</h3>
 
 <p>The final portion of your token is the <strong>signature</strong>. The signature uses <em>HMAC SHA256</em> to generate a keyed hash value. The data that is fed into the hashing algorithm is made up of the header and payload which are both individually <em>base 64 encoded and URL safe</em>. These two pieces are then appended together and hashed using the secret key issued to your consumer.</p>
+
+          <h1 id="roles">Roles</h1>
+
+<p>The API token that is used to access the Partner API can be broken into two roles: parent and child consumers.</p>
+
+<p>Parent consumers have full access rights; they can create consumers, funds, and beneficiaries.
+They can also view fund information for funds created by their consumers.</p>
+
+<p>Child consumers have curtailed access rights; 
+they can only create funds and beneficiaries, and only view the funds that they 
+themselves have created.</p>
+
+<h2 id="endpoint-access-reference">Endpoint Access Reference</h2>
+
+<table><thead>
+<tr>
+<th>Endpoint</th>
+<th>Role</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">beneficiary.create</code></td>
+<td>parent, child</td>
+</tr>
+<tr>
+<td><code class="prettyprint">consumer.create</code></td>
+<td>parent</td>
+</tr>
+<tr>
+<td><code class="prettyprint">consumer.edit</code></td>
+<td>parent</td>
+</tr>
+<tr>
+<td><code class="prettyprint">consumer.get</code></td>
+<td>parent</td>
+</tr>
+<tr>
+<td><code class="prettyprint">consumer.reissue</code></td>
+<td>parent</td>
+</tr>
+<tr>
+<td><code class="prettyprint">consumer.funds</code></td>
+<td>parent, child</td>
+</tr>
+<tr>
+<td><code class="prettyprint">fund.create</code></td>
+<td>parent, child</td>
+</tr>
+<tr>
+<td><code class="prettyprint">fund.launch</code></td>
+<td>parent, child</td>
+</tr>
+<tr>
+<td><code class="prettyprint">fund.get</code></td>
+<td>parent, child</td>
+</tr>
+<tr>
+<td><code class="prettyprint">fund.get.*</code></td>
+<td>parent, child</td>
+</tr>
+</tbody></table>
 
           <h1 id="response-handling">Response Handling</h1>
 
@@ -617,7 +678,7 @@ These error codes are subject to change in future versions
 </tbody></table>
 
 <aside class="notice">
-If both `before` and `after` are passed in, only `before` will be used.
+If both <code>before</code> and <code>after</code> are passed in, only <code>before</code> will be used.
 </aside>
 
 <h2 id="response">Response</h2>
@@ -975,6 +1036,10 @@ You can safely assume object IDs we generate will never exceed 255 characters.</
 
 <p>Creates a new GoFundMe consumer account.</p>
 
+<aside class="notice">
+This is a parent consumer-only endpoint. Please reference the <a href="#roles">roles documentation</a> for more information.
+</aside>
+
 <blockquote>
 <p>Body parameter</p>
 </blockquote>
@@ -1199,6 +1264,10 @@ You can safely assume object IDs we generate will never exceed 255 characters.</
 
 <p>Get a single GoFundMe consumer</p>
 
+<aside class="notice">
+This is a parent consumer-only endpoint. Please reference the <a href="#roles">roles documentation</a> for more information.
+</aside>
+
 <h3 id="parameters">Parameters</h3>
 
 <table><thead>
@@ -1328,6 +1397,10 @@ You can safely assume object IDs we generate will never exceed 255 characters.</
 <p><em>Edit Consumer Account</em></p>
 
 <p>Edits an existing GoFundMe consumer account</p>
+
+<aside class="notice">
+This is a parent consumer-only endpoint. Please reference the <a href="#roles">roles documentation</a> for more information.
+</aside>
 
 <blockquote>
 <p>Body parameter</p>
@@ -1462,6 +1535,10 @@ This operation does not return a response body.
 
 <p>Reissue a GoFundMe consumer secret</p>
 
+<aside class="notice">
+This is a parent consumer-only endpoint. Please reference the <a href="#roles">roles documentation</a> for more information.
+</aside>
+
 <h3 id="parameters">Parameters</h3>
 
 <table><thead>
@@ -1576,7 +1653,7 @@ This operation does not return a response body.
       </span><span class="p">},</span><span class="w">
       </span><span class="nt">"comments_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
       </span><span class="nt">"donations_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -1788,7 +1865,7 @@ Responses will be contained inside a <code class="prettyprint">data</code> array
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"comments_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"donations_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"launched_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1961,7 +2038,7 @@ This operation does not return a response body.
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"comments_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
   </span><span class="nt">"donations_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2084,7 +2161,7 @@ This operation does not return a response body.
   </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"person@example.org"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full Name"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"fund_creation_enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-17T00:12:16Z"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
