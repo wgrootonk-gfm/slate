@@ -25,6 +25,7 @@ includes:
   - reference/fund/create
   - reference/fund/launch
   - reference/fund/get
+  - reference/fund/collection_get
   - reference/fund/user
   - reference/fund/beneficiary
   - reference/fund/comments

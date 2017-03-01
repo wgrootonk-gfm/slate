@@ -21,5 +21,6 @@ themselves have created.
 |`consumer.funds`|parent, child|
 |`fund.create`|parent, child|
 |`fund.launch`|parent, child|
+|`fund.collection.get`|parent, child|
 |`fund.get`|parent, child|
 |`fund.get.*`|parent, child|
