@@ -13,14 +13,6 @@ themselves have created.
 
 |Endpoint|Role|
 |---|---|
-|`beneficiary.create`|parent, child|
-|`consumer.create`|parent|
-|`consumer.edit`|parent|
-|`consumer.get`|parent|
-|`consumer.reissue`|parent|
-|`consumer.funds`|parent, child|
-|`fund.create`|parent, child|
-|`fund.launch`|parent, child|
-|`fund.collection.get`|parent, child|
-|`fund.get`|parent, child|
-|`fund.get.*`|parent, child|
+|`beneficiary.*`|parent, child|
+|`consumer.*`|parent|
+|`fund.*`|parent, child|

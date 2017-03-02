@@ -16,16 +16,17 @@ includes:
   - reference/beneficiary/root
   - reference/beneficiary/create
   - reference/consumer/root
+  - reference/consumer/collection_get
   - reference/consumer/create
   - reference/consumer/get
   - reference/consumer/edit
   - reference/consumer/reissue
   - reference/consumer/funds
   - reference/fund/root
+  - reference/fund/collection_get
   - reference/fund/create
   - reference/fund/launch
   - reference/fund/get
-  - reference/fund/collection_get
   - reference/fund/user
   - reference/fund/beneficiary
   - reference/fund/comments
