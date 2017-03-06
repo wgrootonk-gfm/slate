@@ -32,5 +32,6 @@ includes:
   - reference/fund/comments
   - reference/fund/donations
   - reference/fund/updates
+  - campaign_claim_flow
 search: true
 ---
