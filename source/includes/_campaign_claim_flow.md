@@ -2,7 +2,7 @@
 
 When you launch a fund through the [fund.launch](#fund-launch) endpoint, an email is sent to the user's email address with a special link allowing them to claim their campaign.
 
-For security reasons, currently signed-in users will be signed out and asked to click the link in the claim email again to proceed.
+For security reasons, currently signed-in users will be signed out and asked to click the link in the claim email again to proceed. Once an account and/or campaign are claimed, the claim link will be ignored if used again; site usage will proceed as normal in this case. A user cannot make a claim more than once, nor can anyone else use the link to sign up using a different email address.
 
 The steps for claiming a campaign are slightly different based on whether the user is an existing GoFundMe user or a new user created through the API.
 
